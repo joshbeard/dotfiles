@@ -47,7 +47,9 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " 80 column concern
 "let &colorcolumn=join(range(81,999),",")
-set colorcolumn=80
+if version >= 703
+  set colorcolumn=80
+endif
 
 " nerdtree
 map <leader>n :NERDTreeToggle<CR>
