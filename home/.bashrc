@@ -113,11 +113,11 @@ ColorOff="\[\033[0m\]"       # Text Reset
 
 if [ $(id -u) -eq 0 ];
         then # you are root, set red colour prompt
-                PS1="${txtred}> ${txtgrn}\W ${txtred}\#${txtrst} "
+                PS1="${txtgrn}\w ${txtred}#${txtrst} "
         else
                 #PS1='\h:\W \u\$ '
                 PS1="${txtgrn}\w ${txtblu}\$${txtrst} "
-                SUDO_PS1="${txtred}> ${txtgrn}\W ${txtred}\#${txtrst} "
+                SUDO_PS1="${txtgrn}\w ${txtred}#${txtrst} "
 fi
 
 export GREP_OPTIONS=--color=auto
