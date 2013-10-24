@@ -13,3 +13,11 @@ I'll put some of my dotfiles here - mostly for my own portability.
 
 ## Use vundle to install vim plugins/extensions
 run `:BundleInstall` from within vim
+You can also just do:
+    vim -c ":BundleInstall"
+
+## Updating
+   homesick pull
+
+And also useful is
+   homesick symlink
