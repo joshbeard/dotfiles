@@ -43,6 +43,8 @@ set number
 set smartindent
 set t_Co=256
 
+set formatoptions-=cro
+
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " 80 column concern

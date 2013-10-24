@@ -6,7 +6,11 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="josh"
+if [ -f ~/.oh-my-zsh/themes/josh.zsh-theme ]; then
+  ZSH_THEME="josh"
+else
+  ZSH_THEME="robbyrussell"
+fi
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -41,15 +45,23 @@ ZSH_THEME="josh"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras github tmux rvm ruby osx macports vagrant)
+plugins=(git github tmux rvm ruby osx macports vagrant zsh-syntax-highlighting ssh-agent autojump)
 
 function git_prompt_info() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
     echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
   }
 
-export PATH=$PATH:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
-export PATH=$PATH:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+export PATH=$PATH:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:~/bin
+
+# vi mode
+# set -o vi
+# bindkey '^?' backward-delete-char
+
+# aliases
+alias v=/usr/bin/vagrant
+alias marked='open -a marked'
+
+autoload -U compinit; compinit
