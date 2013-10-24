@@ -52,9 +52,10 @@ function git_prompt_info() {
     echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
   }
 
-source $ZSH/oh-my-zsh.sh
 
 export PATH=$PATH:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:~/bin
+
+source $ZSH/oh-my-zsh.sh
 
 # vi mode
 # set -o vi
