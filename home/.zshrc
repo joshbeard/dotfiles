@@ -64,5 +64,6 @@ source $ZSH/oh-my-zsh.sh
 # aliases
 alias v=/usr/bin/vagrant
 alias marked='open -a marked'
+alias tmux='tmux -2'
 
 autoload -U compinit; compinit
