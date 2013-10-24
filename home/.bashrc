@@ -10,7 +10,8 @@ fi
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
 
 # Shell variables
-export PAGER=less
+export PAGER="less -X"
+export MANPAGER="less -X"
 export EDITOR=vim
 export PATH=$PATH:$HOME/bin
 export LESS='-R'
@@ -66,6 +67,7 @@ alias cd..="cd .."
 alias mkdir='mkdir -p -v'
 alias df='df -h'
 alias du='du -h -c'
+alias less='less -X'
 
 alias lsd="ls -hdlf */"
 

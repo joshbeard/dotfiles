@@ -65,5 +65,8 @@ source $ZSH/oh-my-zsh.sh
 alias v=/usr/bin/vagrant
 alias marked='open -a marked'
 alias tmux='tmux -2'
+alias less='less -X'
+
+export MANPAGER="less -X"
 
 autoload -U compinit; compinit
