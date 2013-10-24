@@ -35,6 +35,8 @@ highlight comment ctermfg=cyan
 
 let g:neocomplcache_enable_at_startup = 1
 
+map <Leader>= <C-w>=
+
 set tabstop=2
 set expandtab
 set softtabstop=2
