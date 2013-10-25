@@ -68,5 +68,6 @@ alias tmux='tmux -2'
 alias less='less -X'
 
 export MANPAGER="less -X"
+export PAGER="less -X"
 
 autoload -U compinit; compinit
