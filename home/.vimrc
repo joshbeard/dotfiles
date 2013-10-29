@@ -20,6 +20,7 @@ Bundle 'rodjek/vim-puppet'
 Bundle 'bling/vim-airline'
 Bundle 'scrooloose/syntastic'
 Bundle 'Pychimp/vim-sol'
+Bundle 'tpope/vim-fugitive'
 
 " turn off auto adding comments on next line
 " so you can cut and paste reliably
