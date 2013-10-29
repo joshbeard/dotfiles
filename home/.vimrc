@@ -57,6 +57,7 @@ endif
 
 " nerdtree
 map <leader>n :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
 " " autocmd vimenter * if !argc() | NERDTree | endif
 "
 " " colorscheme
