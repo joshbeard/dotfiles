@@ -21,6 +21,7 @@ Bundle 'bling/vim-airline'
 Bundle 'scrooloose/syntastic'
 Bundle 'Pychimp/vim-sol'
 Bundle 'tpope/vim-fugitive'
+Bundle 'joshbeard/vim-kolor'
 
 " turn off auto adding comments on next line
 " so you can cut and paste reliably
@@ -62,7 +63,7 @@ map <C-n> :NERDTreeToggle<CR>
 " " autocmd vimenter * if !argc() | NERDTree | endif
 "
 " " colorscheme
-color zenburn
+color kolor
 syn on
 
 highlight LiteralTabs ctermbg=darkgreen guibg=darkgreen
