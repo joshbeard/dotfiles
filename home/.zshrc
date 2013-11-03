@@ -69,5 +69,6 @@ alias less='less -X'
 
 export MANPAGER="less -X"
 export PAGER="less -X"
+export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
 
 autoload -U compinit; compinit
