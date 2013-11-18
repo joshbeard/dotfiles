@@ -2,7 +2,7 @@
 	name = Josh Beard
 	email = beard@puppetlabs.com
 [core]
-	autocrlf = input
+	autocrlf = false
 	safecrlf = true
 
 [alias]
