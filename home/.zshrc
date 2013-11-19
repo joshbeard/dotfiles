@@ -71,4 +71,9 @@ export MANPAGER="less -X"
 export PAGER="less -X"
 export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
 
+# for envpuppet (https://github.com/puppetlabs/puppet/blob/master/ext/envpuppet)
+export ENVPUPPET_BASEDIR=/Users/josh/Projects/envpuppet
+alias puppet='sh ~/bin/envpuppet puppet'
+alias facter='sh ~/bin/envpuppet facter'
+
 autoload -U compinit; compinit
