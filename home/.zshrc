@@ -76,4 +76,6 @@ export ENVPUPPET_BASEDIR=/Users/josh/Projects/envpuppet
 alias puppet='sh ~/bin/envpuppet puppet'
 alias facter='sh ~/bin/envpuppet facter'
 
+alias puppet-lint='puppet-lint --no-80chars-check'
+
 autoload -U compinit; compinit
