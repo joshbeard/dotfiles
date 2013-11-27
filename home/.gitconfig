@@ -1,20 +1,20 @@
 [user]
-	name = Josh Beard
-	email = beard@puppetlabs.com
+  name = Josh Beard
+  email = beard@puppetlabs.com
 [core]
-	autocrlf = false
-	safecrlf = true
+  autocrlf = false
+  safecrlf = true
 
 [alias]
-	co = checkout
-	ci = commit
-	st = status
-	br = branch
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
   lg = "log --pretty=format:'%C(yellow)%h%C(reset) %C(blue)%an%C(reset) %C(cyan)%cr%C(reset) %s %C(green)%d%C(reset)' --graph --date-order"
   fa = "fetch --all"
-	type = cat-file -t
-	dump = cat-file -p
-	last = log -1 HEAD
+  type = cat-file -t
+  dump = cat-file -p
+  last = log -1 HEAD
 
 [color]
   ui = auto
@@ -33,7 +33,9 @@
   untracked = red
 
 # I'm disabling this for performance
+# It just adds a little prompt indicator of the repo status, but is
+# painfully slow on massive repos.
 [oh-my-zsh]
-	hide-status = 1
+  hide-status = 1
 [push]
-	default = simple
+  default = simple
