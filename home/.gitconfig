@@ -35,3 +35,5 @@
 # I'm disabling this for performance
 [oh-my-zsh]
 	hide-status = 1
+[push]
+	default = simple
