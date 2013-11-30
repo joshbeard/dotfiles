@@ -78,4 +78,10 @@ alias facter='sh ~/bin/envpuppet facter'
 
 alias puppet-lint='puppet-lint --no-80chars-check --no-documentation-check'
 
+# Easily delete removed files from git index
+# From: https://github.com/ariejan/
+grm() {
+  git status | grep "deleted:" | awk '{print $3}' | xargs git rm --ignore-unmatch
+}
+
 autoload -U compinit; compinit
