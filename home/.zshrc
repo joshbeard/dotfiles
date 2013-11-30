@@ -6,7 +6,7 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="robbyrussell"
-if [ -f ~/.oh-my-zsh/themes/josh.zsh-theme ]; then
+if [ -f ~/.oh-my-zsh/custom/themes/josh.zsh-theme ]; then
   ZSH_THEME="josh"
 else
   ZSH_THEME="robbyrussell"
