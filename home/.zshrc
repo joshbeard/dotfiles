@@ -64,6 +64,7 @@ source $ZSH/oh-my-zsh.sh
 # aliases
 alias v=/usr/bin/vagrant
 alias marked='open -a marked'
+alias mou='open -a mou'
 alias tmux='tmux -2'
 alias less='less -X'
 
