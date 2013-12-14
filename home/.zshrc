@@ -68,6 +68,7 @@ alias mou='open -a mou'
 alias tmux='tmux -2'
 alias less='less -X'
 
+export EDITOR="vim"
 export MANPAGER="less -X"
 export PAGER="less -X"
 export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
