@@ -45,7 +45,7 @@ fi
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git github tmux rvm ruby osx macports vagrant zsh-syntax-highlighting ssh-agent autojump)
+plugins=(git github tmux rvm ruby osx brew vagrant zsh-syntax-highlighting ssh-agent autojump)
 
 function git_prompt_info() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
@@ -53,7 +53,7 @@ function git_prompt_info() {
   }
 
 
-export PATH=$PATH:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:~/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:$PATH
 
 source $ZSH/oh-my-zsh.sh
 
