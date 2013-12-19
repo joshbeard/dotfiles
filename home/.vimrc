@@ -1,5 +1,7 @@
+" Josh's .vimrc
+
 set nocompatible
-filetype off
+"filetype off
 
 set rtp+=~/.vim/bundle/vundle/
 
@@ -8,26 +10,62 @@ call vundle#rc()
 " let Vundle manage Vundle
 " " required!
 Bundle 'gmarik/vundle'
+
+" file browser
 Bundle 'scrooloose/nerdtree'
-Bundle 'jnurmine/Zenburn'
+
+" text alignment
 Bundle 'godlygeek/tabular'
+
+" fuzzy file,buffer,mru,tag,... finder
 Bundle 'kien/ctrlp.vim'
+
+" keyword completion cache
 Bundle 'Shougo/neocomplcache.vim'
+
+" text surrounds
 Bundle 'tpope/vim-surround'
+
+Bundle 'joshbeard/timestamp.vim'
+
 Bundle 'majutsushi/tagbar'
+
+" window zooming
 Bundle 'vim-scripts/ZoomWin'
+
+" puppet niceties
 Bundle 'rodjek/vim-puppet'
+
+" status/tabline for vim
 Bundle 'bling/vim-airline'
+
+" syntax checking plugin
 Bundle 'scrooloose/syntastic'
-Bundle 'Pychimp/vim-sol'
+
+" Git wrapper
 Bundle 'tpope/vim-fugitive'
+map <Leader>a :Git add %<CR>
+map <Leader>s :Gstatus<CR>
+map <Leader>c :Gcommit<CR>
+
+" wisely add end in ruby, endfunction/endif/more in vim script, etc
+Bundle 'tpope/vim-endwise'
+
+" sexy color theme
 Bundle 'joshbeard/vim-kolor'
+" a light colorscheme
+Bundle 'Pychimp/vim-sol'
+" light/pleasant colorscheme
+Bundle 'jnurmine/Zenburn'
 
 " turn off auto adding comments on next line
 " so you can cut and paste reliably
 " http://vimdoc.sourceforge.net/htmldoc/change.html#fo-table
+
 set fo=tcq
+filetype plugin on
 set modeline
+set modelines=1
 
 syntax on
 
@@ -83,7 +121,7 @@ au BufRead,BufNewFile *_spec.rb
 " Enable indentation matching for =>'s
 filetype plugin indent on
 
-
+" switch panes easier
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -121,12 +159,26 @@ let g:airline_theme             = 'powerlineish'
 let g:airline_enable_branch     = 1
 let g:airline_enable_syntastic  = 1
 let g:airline_powerline_fonts   = 1
-
+"
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
 let g:airline#extensions#tabline#enabled = 1
+
+" unicode symbols
+let g:airline_left_sep = '»'
+"let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+"let g:airline_right_sep = '◀'
+let g:airline_linecolumn_prefix = '␊ '
+let g:airline_linecolumn_prefix = '␤ '
+let g:airline_linecolumn_prefix = '¶ '
+let g:airline#extensions#branch#symbol = '⎇ '
+let g:airline_paste_symbol = 'ρ'
+let g:airline_paste_symbol = 'Þ'
+let g:airline_paste_symbol = '∥'
+let g:airline#extensions#whitespace#symbol = 'Ξ'
 
 " Always show the airline bar
 set laststatus=2
