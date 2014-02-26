@@ -71,7 +71,8 @@ alias less='less -X'
 export EDITOR="vim"
 export MANPAGER="less -X"
 export PAGER="less -X"
-export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
+#export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
+export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
 # for envpuppet (https://github.com/puppetlabs/puppet/blob/master/ext/envpuppet)
 export ENVPUPPET_BASEDIR=/Users/josh/Projects/envpuppet
