@@ -75,7 +75,7 @@ export PAGER="less -X"
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
 # for envpuppet (https://github.com/puppetlabs/puppet/blob/master/ext/envpuppet)
-export ENVPUPPET_BASEDIR=/Users/josh/Projects/envpuppet
+export ENVPUPPET_BASEDIR=/Users/josh/Projects/puppet
 alias puppet='sh ~/bin/envpuppet puppet'
 alias facter='sh ~/bin/envpuppet facter'
 
