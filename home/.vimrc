@@ -21,7 +21,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'kien/ctrlp.vim'
 
 " keyword completion cache
-Bundle 'Shougo/neocomplcache.vim'
+"Bundle 'Shougo/neocomplcache.vim'
 
 " text surrounds
 Bundle 'tpope/vim-surround'
