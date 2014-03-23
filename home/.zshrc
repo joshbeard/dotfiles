@@ -81,6 +81,9 @@ alias facter='sh ~/bin/envpuppet facter'
 
 alias puppet-lint='puppet-lint --no-80chars-check --no-documentation-check'
 
+# Disable autocorrection for 'bundle'
+alias bundle='nocorrect bundle'
+
 # Easily delete removed files from git index
 # From: https://github.com/ariejan/
 grm() {
