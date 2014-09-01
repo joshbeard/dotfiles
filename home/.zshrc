@@ -52,7 +52,6 @@ bundler
 git
 github
 osx
-rvm
 ruby
 tmux
 ssh-agent
