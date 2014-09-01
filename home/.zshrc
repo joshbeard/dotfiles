@@ -70,4 +70,7 @@ source $ZSH/oh-my-zsh.sh
 
 [ -f ~/.env ] && source ~/.env
 
+## rbenv
+eval "$(rbenv init -)"
+
 autoload -U compinit; compinit
