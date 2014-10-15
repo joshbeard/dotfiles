@@ -58,6 +58,9 @@ Bundle 'tomasr/molokai'
 Bundle 'chankaward/vim-railscasts-theme'
 Bundle 'zefei/cake16'
 
+" http://vimcolors.com/54/Tomorrow-Night-Eighties/dark
+Bundle 'chriskempson/vim-tomorrow-theme'
+
 " a light colorscheme
 Bundle 'Pychimp/vim-sol'
 " light/pleasant colorscheme
