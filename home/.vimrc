@@ -56,6 +56,7 @@ Bundle 'joshbeard/vim-kolor'
 
 Bundle 'tomasr/molokai'
 Bundle 'chankaward/vim-railscasts-theme'
+Bundle 'zefei/cake16'
 
 " a light colorscheme
 Bundle 'Pychimp/vim-sol'
