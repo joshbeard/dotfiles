@@ -109,7 +109,7 @@ map <C-n> :NERDTreeToggle<CR>
 " " autocmd vimenter * if !argc() | NERDTree | endif
 "
 " " colorscheme
-color kolor
+color railscasts
 syn on
 
 highlight LiteralTabs ctermbg=darkgreen guibg=darkgreen
