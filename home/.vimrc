@@ -53,6 +53,10 @@ Bundle 'tpope/vim-endwise'
 
 " sexy color theme
 Bundle 'joshbeard/vim-kolor'
+
+Bundle 'tomasr/molokai'
+Bundle 'chankaward/vim-railscasts-theme'
+
 " a light colorscheme
 Bundle 'Pychimp/vim-sol'
 " light/pleasant colorscheme
