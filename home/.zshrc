@@ -70,6 +70,8 @@ source $ZSH/oh-my-zsh.sh
 
 [ -f ~/.env ] && source ~/.env
 
+[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
+
 ## rbenv
 eval "$(rbenv init -)"
 
