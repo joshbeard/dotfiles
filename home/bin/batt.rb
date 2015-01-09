@@ -1,23 +1,12 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
-#full    = "★"
-#empty   = "☆"
+#
+# Usage example:
+#    /usr/bin/pmset -g batt | batt.rb
+#
 #battery = "🔋"
 battery = "◒"
 plug    = "⚡"
-
-full       = "█"
-seveneight = "▇"
-threequar  = "▆"
-fiveeight  = "▅"
-half       = "▄"
-threeeight = "▃"
-quarter    = "▂"
-oneeight   = "▁"
-
-
-star_count = 8
-per_star = 100/star_count
 
 v= Hash.new()
 
@@ -34,6 +23,8 @@ ARGF.each do |a|
       v[:percent] = $~[1].to_i
       v[:state]   = $~[2]
       v[:time]    = $~[3]
+      v[:hours]   = v[:time].split(':')[0]
+      v[:mins]    = v[:time].split(':')[1]
     else
       v[:percent] = "0"
       v[:state]   = "unknown"
@@ -41,22 +32,11 @@ ARGF.each do |a|
     end
   end
 end
-outstring = ""
+
 if v[:source]== "Battery Power"
- outstring += "#{battery} "
+  outstring = "#{battery} #{v[:percent]}% #{v[:time]}"
 else
-  outstring +="#{plug} "
+  outstring = "#{plug} #{v[:percent]}%"
 end
-
-bar="▐"
-
-#full_stars  = v[:percent]/per_star
-#empty_stars = star_count - full_stars
-#full_stars.times  {outstring += "#{full} "}
-#empty_stars.times {outstring += "#{empty} "}
-
-#outstring += v[:time] == "0:00" ? " charged" : " #{v[:time]}"
-#outstring += v[:percent] == "0:00" ? " charged" : " #{v[:percent]}"
-outstring += "#{v[:percent]}%"
 
 puts outstring
