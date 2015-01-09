@@ -30,7 +30,7 @@ ARGF.each do |a|
       v[:source] = ""
     end
   elsif a.start_with?" -"
-    if a =~ /(\d{1,3})%;\s(.*);\s(\d:\d{2}|\(no estimate\))/
+    if a =~ /(\d{1,3})%;\s(.*);\s(\d+:\d{2}|\(no estimate\))/
       v[:percent] = $~[1].to_i
       v[:state]   = $~[2]
       v[:time]    = $~[3]
