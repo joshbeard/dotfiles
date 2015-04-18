@@ -60,7 +60,7 @@ vagrant
 zsh-syntax-highlighting
 )
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin:$PATH
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin$PATH
 
 source $ZSH/oh-my-zsh.sh
 

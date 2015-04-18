@@ -1,6 +1,6 @@
 [user]
   name = Josh Beard
-  email = beard@puppetlabs.com
+  email = josh@signalboxes.net
 
 [core]
   autocrlf = false
@@ -62,3 +62,7 @@
 
 [credential]
 helper = /opt/boxen/bin/boxen-git-credential
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
