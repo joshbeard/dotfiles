@@ -1,70 +1,60 @@
 " Josh's .vimrc
 
 set nocompatible
-"filetype off
+filetype off
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 
-call vundle#rc()
 
-" let Vundle manage Vundle
-" " required!
-Bundle 'gmarik/vundle'
+call vundle#begin()
+
 
 " file browser
-Bundle 'scrooloose/nerdtree'
-
-" text alignment
-Bundle 'godlygeek/tabular'
+Plugin 'scrooloose/nerdtree'
 
 " fuzzy file,buffer,mru,tag,... finder
-Bundle 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 
 " keyword completion cache
-"Bundle 'Shougo/neocomplcache.vim'
+"Plugin 'Shougo/neocomplcache.vim'
 
 " text surrounds
-Bundle 'tpope/vim-surround'
+Plugin 'tpope/vim-surround'
 
-Bundle 'joshbeard/timestamp.vim'
+Plugin 'joshbeard/timestamp.vim'
 
-Bundle 'majutsushi/tagbar'
+Plugin 'majutsushi/tagbar'
 
 " window zooming
-Bundle 'vim-scripts/ZoomWin'
-
-" puppet niceties
-Bundle 'rodjek/vim-puppet'
+Plugin 'vim-scripts/ZoomWin'
 
 " status/tabline for vim
-Bundle 'bling/vim-airline'
-
-" syntax checking plugin
-Bundle 'scrooloose/syntastic'
+Plugin 'bling/vim-airline'
 
 " Git wrapper
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
+call vundle#end()
 map <Leader>a :Git add %<CR>
 map <Leader>s :Gstatus<CR>
 map <Leader>c :Gcommit<CR>
 
 " wisely add end in ruby, endfunction/endif/more in vim script, etc
-Bundle 'tpope/vim-endwise'
+Plugin 'tpope/vim-endwise'
 
 " sexy color theme
-Bundle 'joshbeard/vim-kolor'
+Plugin 'joshbeard/vim-kolor'
 
-Bundle 'tomasr/molokai'
-Bundle 'chankaward/vim-railscasts-theme'
-Bundle 'zefei/cake16'
+Plugin 'tomasr/molokai'
+Plugin 'chankaward/vim-railscasts-theme'
+Plugin 'zefei/cake16'
 
 " http://vimcolors.com/54/Tomorrow-Night-Eighties/dark
-Bundle 'chriskempson/vim-tomorrow-theme'
+Plugin 'chriskempson/vim-tomorrow-theme'
 
 " a light colorscheme
-Bundle 'Pychimp/vim-sol'
+Plugin 'Pychimp/vim-sol'
 " light/pleasant colorscheme
-Bundle 'jnurmine/Zenburn'
+Plugin 'jnurmine/Zenburn'
 
 " turn off auto adding comments on next line
 " so you can cut and paste reliably
@@ -119,15 +109,6 @@ match ExtraWhitespace /\s\+$/
 
 " Show me a ruler
 set ruler
-
-" Set up puppet manifest and spec options
-au BufRead,BufNewFile *.pp
-  \ set filetype=puppet
-au BufRead,BufNewFile *_spec.rb
-  \ nmap <F8> :!rspec --color %<CR>
-
-" Enable indentation matching for =>'s
-filetype plugin indent on
 
 " switch panes easier
 nnoremap <C-J> <C-W><C-J>
@@ -190,3 +171,7 @@ let g:airline#extensions#whitespace#symbol = 'Ξ'
 
 " Always show the airline bar
 set laststatus=2
+" vundler and puppet; Added by puppet_dev
+source /Users/jbeard/.vim_puppet
+set rtp+=~/.vim/bundle/Vundle.vim
+Plugin 'gmarik/Vundle.vim'
