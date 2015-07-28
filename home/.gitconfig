@@ -1,12 +1,11 @@
 [user]
-  name = Josh Beard
-  email = josh@signalboxes.net
+	name = Josh Beard
+	email = josh@signalboxes.net
 
 [core]
   autocrlf = false
   safecrlf = true
   editor = vim
-  excludesfile = /opt/boxen/config/git/gitignore
 
 [alias]
   co = checkout
@@ -60,9 +59,9 @@
 	clean = git media clean %f
 	smudge = git media smudge %f
 
-[credential]
-helper = /opt/boxen/bin/boxen-git-credential
 [filter "hawser"]
 	clean = git hawser clean %f
 	smudge = git hawser smudge %f
 	required = true
+[merge "ours"]
+	driver = true
