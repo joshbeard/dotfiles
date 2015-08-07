@@ -1,26 +1,39 @@
 I'll put some of my dotfiles here - mostly for my own portability.
 
 ## Install oh-my-zsh
-    git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+
+```shell
+git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+```
 
 ## Use homesick to fetch dotfiles
-    gem install homesick
-    homesick clone joshbeard/dotfiles
-    homesick symlink joshbeard/dotfiles
+
+```shell
+gem install homesick
+homesick clone joshbeard/dotfiles
+homesick symlink dotfiles
+```
 
 ## Install vundle for vim
-    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
-## Use vundle to install vim plugins/extensions
-run `:BundleInstall` from within vim
+```shell
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+```
 
-You can also just do:
+## Install plugins
 
-    vim -c ":BundleInstall"
+```shell
+vim +PluginInstall +qall
+```
 
 ## Updating
-    homesick pull
+
+```shell
+homesick pull
+```
 
 And also useful is
 
-    homesick symlink
+```shell
+homesick symlink
+```
