@@ -1,8 +1,12 @@
 # Vim temp files #
 ##################
-**/*~
 **/*.bak
-**/*.sw[abcdefghijklmnop]
+**/*.[._]*.s[a-w][a-z]
+**/*.[._]s[a-w][a-z]
+**/.un~
+**/Session.vim
+**/.netrwhist
+**/*~
 
 # Compiled source #
 ###################
