@@ -21,6 +21,8 @@ Plugin 'kien/ctrlp.vim'
 " text surrounds
 Plugin 'tpope/vim-surround'
 
+Plugin 'plasticboy/vim-markdown'
+
 Plugin 'joshbeard/timestamp.vim'
 
 Plugin 'majutsushi/tagbar'
@@ -37,6 +39,9 @@ call vundle#end()
 map <Leader>a :Git add %<CR>
 map <Leader>s :Gstatus<CR>
 map <Leader>c :Gcommit<CR>
+
+" Ruby completion
+Plugin 'vim-ruby/vim-ruby'
 
 " wisely add end in ruby, endfunction/endif/more in vim script, etc
 Plugin 'tpope/vim-endwise'
@@ -168,6 +173,9 @@ let g:airline#extensions#branch#symbol = '⎇ '
 "let g:airline_paste_symbol = 'Þ'
 "let g:airline_paste_symbol = '∥'
 let g:airline#extensions#whitespace#symbol = 'Ξ'
+
+" Disable Markdown folding
+let g:vim_markdown_folding_disabled=1
 
 " Always show the airline bar
 set laststatus=2
