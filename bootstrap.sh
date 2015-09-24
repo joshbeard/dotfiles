@@ -1,8 +1,6 @@
 #!/bin/sh
-
-
-## Install oh-my-zsh
-git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+## Install prezto
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
 ## Use homesick to fetch dotfiles
 gem install homesick
