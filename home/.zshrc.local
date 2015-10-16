@@ -1,0 +1,40 @@
+export HISTFILE=~/.zsh_history
+export HISTIGNORE=ls:history
+export HISTSIZE=10000
+export HISTTIMEFORMAT='%Y-%m-%d %T '
+export SAVEHIST=10000
+export EDITOR="vim"
+export MANPAGER="less -X"
+export PAGER="less -X"
+
+## Common Aliases
+alias less='less -X'
+alias bundle='nocorrect bundle'
+
+alias d='dirs -v; echo -n "select number: "; read newdir; cd -"$newdir"'
+alias grep="grep --color=auto"
+alias rm="rm -i"
+alias mv="mv -i"
+alias ls="ls -hFG"
+
+# tmux
+alias tmux='tmux -2'
+alias tl='tmux ls'
+alias ta='tmux attach -t'
+alias tr='tmux rename-session -t'
+
+# add datetime
+alias history="history -i"
+
+# Easily delete removed files from git index
+# From: https://github.com/ariejan/
+grm() {
+  git status | grep "deleted:" | awk '{print $3}' | xargs git rm --ignore-unmatch
+}
+
+function git_prompt_info() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
+}
+
+[ -d $HOME/.rbenv/ ]  && eval "$(rbenv init - zsh)"

@@ -1,5 +1,3 @@
-I'll put some of my dotfiles here - mostly for my own portability.
-
 ## Install [prezto](https://github.com/sorin-ionescu/prezto)
 
 ```shell
@@ -37,3 +35,9 @@ And also useful is
 ```shell
 homesick symlink
 ```
+
+## Other things
+
+[homebrew-notifier](https://github.com/grantovich/homebrew-notifier)
+
+
