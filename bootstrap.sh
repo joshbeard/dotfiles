@@ -5,11 +5,9 @@ git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$H
 ## Use homesick to fetch dotfiles
 gem install homesick
 homesick clone joshbeard/dotfiles
-homesick symlink joshbeard/dotfiles
+homesick link dotfiles
 
 ## Install vundle for vim
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
-## Use vundle to install vim plugins/extensions
-#run `:BundleInstall` from within vim
-vim -c ":BundleInstall"
+vim +PluginInstall +qall

@@ -180,6 +180,6 @@ let g:vim_markdown_folding_disabled=1
 " Always show the airline bar
 set laststatus=2
 " vundler and puppet; Added by puppet_dev
-source /Users/jbeard/.vim_puppet
+source ~/.vim_puppet
 set rtp+=~/.vim/bundle/Vundle.vim
 Plugin 'gmarik/Vundle.vim'

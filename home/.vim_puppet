@@ -1,0 +1,46 @@
+Plugin 'gmarik/vundle'
+
+" Text alignment
+Plugin 'godlygeek/tabular'
+
+" Puppet plugin
+Plugin 'rodjek/vim-puppet'
+
+" Syntax Checking
+Plugin 'scrooloose/syntastic'
+
+" Set up puppet manifest and spec options
+au BufRead,BufNewFile *.yaml
+  \ set tabstop=2
+  \ softtabstop=2
+  \ expandtab
+  \ shiftwidth=2
+
+  if version >= 703
+    set colorcolumn=80
+  endif
+
+au BufRead,BufNewFile *.pp
+  \ set filetype=puppet
+  \ tabstop=2
+  \ softtabstop=2
+  \ expandtab
+  \ shiftwidth=2
+
+  if version >= 703
+    set colorcolumn=80
+  endif
+
+au BufRead,BufNewFile *_spec.rb
+  \ nmap <F8> :!rspec --color %<CR>
+  \ tabstop=2
+  \ softtabstop=2
+  \ expandtab
+  \ shiftwidth=2
+
+  if version >= 703
+    set colorcolumn=80
+  endif
+
+" Enable indentation matching for =>'s
+filetype plugin indent on
