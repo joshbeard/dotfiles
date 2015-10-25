@@ -9,7 +9,6 @@ export PAGER="less -X"
 
 ## Common Aliases
 alias less='less -X'
-alias bundle='nocorrect bundle'
 
 alias d='dirs -v; echo -n "select number: "; read newdir; cd -"$newdir"'
 alias grep="grep --color=auto"
@@ -17,11 +16,23 @@ alias rm="rm -i"
 alias mv="mv -i"
 alias ls="ls -hFG"
 
+alias marked='open -a marked\ 2'
+
 # tmux
-alias tmux='tmux -2'
-alias tl='tmux ls'
-alias ta='tmux attach -t'
-alias tr='tmux rename-session -t'
+if (( $+commands[tmux] )); then
+  alias tmux='tmux -2'
+  alias tl='tmux ls'
+  alias ta='tmux attach -t'
+  alias tr='tmux rename-session -t'
+fi
+
+if (( $+commands[bundle] )); then
+  alias bi='bundle install'
+  alias be='bundle exec'
+  alias bl='bundle list'
+  # Disable autocorrection for 'bundle'
+  alias bundle='nocorrect bundle'
+fi
 
 # add datetime
 alias history="history -i"
@@ -36,5 +47,18 @@ function git_prompt_info() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
   echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
+
+EYAML_PRIVATE_KEY=""
+EYAML_PUBLIC_KEY="/Users/jbeard/Projects/usgs/eyaml/keys/public_key.pkcs7.pem"
+
+if (( $+commands[eyaml] )); then
+  function eyaml() {
+    echo ">> Using ${EYAML_PUBLIC_KEY}"
+    echo
+    command eyaml \
+      $@ \
+      --pkcs7-public-key=${EYAML_PUBLIC_KEY}
+  }
+fi
 
 [ -d $HOME/.rbenv/ ]  && eval "$(rbenv init - zsh)"
