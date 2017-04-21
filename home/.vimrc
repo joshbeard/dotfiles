@@ -5,9 +5,7 @@ filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 
-
 call vundle#begin()
-
 
 " file browser
 Plugin 'scrooloose/nerdtree'
@@ -31,7 +29,8 @@ Plugin 'majutsushi/tagbar'
 Plugin 'vim-scripts/ZoomWin'
 
 " status/tabline for vim
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " Git wrapper
 Plugin 'tpope/vim-fugitive'
