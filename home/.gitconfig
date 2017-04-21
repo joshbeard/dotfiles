@@ -21,6 +21,8 @@
   ds = diff --staged
   bv = branch -vv
   l1 = log --oneline --decorate
+  # git reauthor $START..$END
+  reauthor = !sh -c 'eval `git log --reverse --topo-order --pretty=format:\"git cherry-pick %H &&  git commit --amend -C %H --author=\\\"%aN <%aE>\\\" && \" $0 ` "echo success" '
 
 [color]
   ui = auto
@@ -66,9 +68,10 @@
 	smudge = git hawser smudge %f
 	required = true
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
 	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
