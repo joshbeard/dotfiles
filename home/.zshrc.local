@@ -11,17 +11,6 @@ export KEYTIMEOUT=1
 
 bindkey '^ ' autosuggest-accept
 
-## Common Aliases
-alias less='less -X'
-
-alias d='dirs -v; echo -n "select number: "; read newdir; cd -"$newdir"'
-alias grep="grep --color=auto"
-alias rm="rm -i"
-alias mv="mv -i"
-alias ls="ls -hFG"
-
-alias marked='open -a marked\ 2'
-
 # tmux
 if (( $+commands[tmux] )); then
   alias tmux='tmux -2'
@@ -37,9 +26,6 @@ if (( $+commands[bundle] )); then
   # Disable autocorrection for 'bundle'
   alias bundle='nocorrect bundle'
 fi
-
-# add datetime
-alias history="history -i"
 
 # Easily delete removed files from git index
 # From: https://github.com/ariejan/
@@ -64,5 +50,7 @@ if (( $+commands[eyaml] )); then
       --pkcs7-public-key=${EYAML_PUBLIC_KEY}
   }
 fi
+
+[ -f $HOME/.env ] && source $HOME/.env
 
 [ -d $HOME/.rbenv/ ]  && eval "$(rbenv init - zsh)"
