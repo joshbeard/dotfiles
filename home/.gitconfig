@@ -5,6 +5,9 @@
 [includeIf "gitdir:~/Projects/personal/"]
   path = ~/.gitconfig.personal
 
+[includeIf "gitdir:~/.homesick"]
+  path = ~/.gitconfig.personal
+
 [core]
   autocrlf = false
   safecrlf = true
