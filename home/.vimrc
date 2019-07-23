@@ -86,6 +86,8 @@ set shiftwidth=2
 set number
 set smartindent
 set t_Co=256
+set textwidth=140
+au FileType gitcommit set tw=72
 
 set formatoptions-=cro
 
@@ -94,7 +96,7 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " 80 column concern
 "let &colorcolumn=join(range(81,999),",")
 if version >= 703
-  set colorcolumn=80
+  set colorcolumn=140
 endif
 
 " nerdtree

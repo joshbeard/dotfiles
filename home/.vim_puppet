@@ -39,7 +39,7 @@ au BufRead,BufNewFile *_spec.rb
   \ shiftwidth=2
 
   if version >= 703
-    set colorcolumn=80
+    set colorcolumn=140
   endif
 
 " Enable indentation matching for =>'s
