@@ -1,6 +1,9 @@
 [user]
 	name = Josh Beard
-	email = josh@signalboxes.net
+	email = jbeard@contractor.usgs.gov
+
+[includeIf "gitdir:~/Projects/personal/"]
+  path = ~/.gitconfig.personal
 
 [core]
   autocrlf = false
@@ -23,6 +26,7 @@
   l1 = log --oneline --decorate
   # git reauthor $START..$END
   reauthor = !sh -c 'eval `git log --reverse --topo-order --pretty=format:\"git cherry-pick %H &&  git commit --amend -C %H --author=\\\"%aN <%aE>\\\" && \" $0 ` "echo success" '
+  mr = !sh -c 'git fetch $1 merge-requests/$2/head:mr-$1-$2 && git checkout mr-$1-$2' -
 
 [color]
   ui = auto
@@ -68,13 +72,7 @@
 	smudge = git hawser smudge %f
 	required = true
 [filter "lfs"]
-	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+	required = true
