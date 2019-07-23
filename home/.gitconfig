@@ -5,7 +5,7 @@
 [includeIf "gitdir:~/Projects/personal/"]
   path = ~/.gitconfig.personal
 
-[includeIf "gitdir:~/.homesick"]
+[includeIf "gitdir:~/.homesick/"]
   path = ~/.gitconfig.personal
 
 [core]
