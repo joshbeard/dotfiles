@@ -1,3 +1,9 @@
+# Josh's Dotfiles
+
+I use the [homesick](https://rubygems.org/gems/homesick) Ruby Gem to maintain
+my dotfiles. I use [zsh](https://www.zsh.org/) on my workstation with
+[prezto](https://github.com/sorin-ionescu/prezto).
+
 ## Install [prezto](https://github.com/sorin-ionescu/prezto)
 
 ```shell
@@ -39,5 +45,3 @@ homesick symlink
 ## Other things
 
 [homebrew-notifier](https://github.com/grantovich/homebrew-notifier)
-
-
