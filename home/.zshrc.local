@@ -55,5 +55,3 @@ fi
 
 [ -d $HOME/.rbenv/ ]  && eval "$(rbenv init - zsh)"
 fpath=(/usr/local/share/zsh-completions $fpath)
-source <(sensuctl completion zsh)
-
