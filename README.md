@@ -18,6 +18,12 @@ homesick clone joshbeard/dotfiles
 homesick symlink dotfiles
 ```
 
+## Install Dependencies
+
+```shell
+brew install reattach-to-user-namespace
+```
+
 ## Install vundle for vim
 
 ```shell
