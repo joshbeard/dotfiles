@@ -190,3 +190,7 @@ ex () {
         echo "'$1' is not a valid file"
     fi
 }
+
+[ -d $HOME/.rbenv/ ]  && eval "$(rbenv init - zsh)"
+[ -f $HOME/.env ] && source $HOME/.env
+[ -f $HOME/.env ] && source $HOME/.env.private

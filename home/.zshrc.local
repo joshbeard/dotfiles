@@ -38,20 +38,8 @@ function git_prompt_info() {
   echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
-EYAML_PRIVATE_KEY=""
-EYAML_PUBLIC_KEY="/Users/jbeard/Projects/usgs/eyaml/keys/public_key.pkcs7.pem"
-
-if (( $+commands[eyaml] )); then
-  function eyaml() {
-    echo ">> Using ${EYAML_PUBLIC_KEY}"
-    echo
-    command eyaml \
-      $@ \
-      --pkcs7-public-key=${EYAML_PUBLIC_KEY}
-  }
-fi
-
 [ -f $HOME/.env ] && source $HOME/.env
+[ -f $HOME/.env ] && source $HOME/.env.private
 
 [ -d $HOME/.rbenv/ ]  && eval "$(rbenv init - zsh)"
 fpath=(/usr/local/share/zsh-completions $fpath)
