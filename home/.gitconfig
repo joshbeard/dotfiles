@@ -10,6 +10,9 @@
 [includeIf "gitdir:~/.homesick/"]
   path = ~/.gitconfig.personal
 
+[includeIf "gitdir:/Volumes/Projects"]
+  path = ~/.gitconfig.personal
+
 [core]
   autocrlf = false
   safecrlf = true
