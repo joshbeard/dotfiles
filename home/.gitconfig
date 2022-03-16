@@ -1,9 +1,15 @@
 [user]
 	name = Josh Beard
-	email = jbeard@contractor.usgs.gov
+	email = josh@joshbeard.me
 
 # Refer to https://www.kevinkuszyk.com/2018/12/10/git-tips-6-using-git-with-multiple-email-addresses/
 # for more info
+[includeIf "gitdir:~/Projects/sas/"]
+  path = ~/.gitconfig.work
+
+[includeIf "gitdir:~/Projects/usgs/"]
+  path = ~/.gitconfig.work
+
 [includeIf "gitdir:~/Projects/personal/"]
   path = ~/.gitconfig.personal
 
