@@ -8,6 +8,7 @@ export MANPAGER="less -X"
 export PAGER="less -X"
 export PATH=$PATH:~/bin
 export KEYTIMEOUT=1
+export GPG_TTY=$(tty)
 
 bindkey '^ ' autosuggest-accept
 
