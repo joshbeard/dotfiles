@@ -23,7 +23,7 @@
   autocrlf = false
   safecrlf = true
   editor = vim
-	excludesfile = /Users/jbeard/.gitignore_global
+	excludesfile = /Users/jbeard/.gitignore
 
 [alias]
   co = checkout
