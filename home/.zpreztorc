@@ -38,11 +38,13 @@ zstyle ':prezto:load' pmodule \
   'prompt' \
   'ruby' \
   'spectrum' \
-  'ssh' \
   'syntax-highlighting' \
   'terminal' \
   'tmux' \
   'utility'
+
+# Disabled SSH plugin for Mac workstation to use the keychain
+#  'ssh' \
 
 #
 # Editor
