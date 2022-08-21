@@ -6,7 +6,7 @@ export SAVEHIST=10000
 export EDITOR="vim"
 export MANPAGER="less -X"
 export PAGER="less -X"
-export PATH=$PATH:~/bin
+export PATH=$PATH:~/bin:~/.local/bin
 export KEYTIMEOUT=1
 export GPG_TTY=$(tty)
 
@@ -42,5 +42,10 @@ function git_prompt_info() {
 [ -f $HOME/.env ] && source $HOME/.env
 [ -f $HOME/.env ] && source $HOME/.env.private
 
+if which saml2aws >>/dev/null 2>&1; then
+  eval "$(saml2aws --completion-script-zsh)"
+fi
+
 [ -d $HOME/.rbenv/ ]  && eval "$(rbenv init - zsh)"
 fpath=(/usr/local/share/zsh-completions $fpath)
+
