@@ -1,3 +1,9 @@
+# ===================================================================
+# Josh's .bashrc
+#
+# Common environment configuration is in .env
+# ===================================================================
+
 if [[ $- != *i* ]] ; then
          # Shell is non-interactive.  Be done now!
          return
@@ -6,31 +12,14 @@ fi
 #enable bash completion
 [ -f /etc/profile.d/bash-completion ] && source /etc/profile.d/bash-completion
 
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
+[ -f "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash" ] && \
+  source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
 
-# Shell variables
-export PAGER="less -X"
-export MANPAGER="less -X"
-export EDITOR=vim
-export PATH=$PATH:$HOME/bin
-export LESS='-R'
-export HISTCONTROL=ignoredups
-export HISTSIZE=5000
-export HISTFILESIZE=1000
-export HISTIGNORE="&:ls:ll:la:l.:pwd:exit:clear"
+[ -d $HOME/.rbenv/ ]  && eval "$(rbenv init - zsh)"
 
-
-if [ -d /opt/local/bin ]; then
-        PATH="/opt/local/bin:$PATH"
-fi
-
-if [ -d /usr/lib/cw ] ; then
-        PATH="/usr/lib/cw:$PATH"
-fi
-
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# Common environment configuration (sh, bash, zsh)
+[ -f $HOME/.env ] && source $HOME/.env
+[ -f $HOME/.env.private ] && source $HOME/.env.private
 
 complete -cf sudo       # Tab complete for sudo
 
@@ -43,33 +32,6 @@ shopt -s dotglob        # files beginning with . to be returned in the results o
 ## set options
 set -o noclobber        # prevent overwriting files with cat
 set -o ignoreeof        # stops ctrl+d from logging me out
-
-
-
-# Set appropriate ls alias
-case $(uname -s) in
-        Darwin|FreeBSD)
-                alias ls="ls -hFG"
-        ;;
-        Linux)
-                alias ls="ls --color=always -hF"
-        ;;
-        NetBSD|OpenBSD)
-                alias ls="ls -hF"
-        ;;
-esac
-
-alias rm="rm -i"
-alias mv="mv -i"
-alias cp="cp -i"
-alias ll="ls -hl"
-alias cd..="cd .."
-alias mkdir='mkdir -p -v'
-alias df='df -h'
-alias du='du -h -c'
-alias less='less -X'
-
-alias lsd="ls -hdlf */"
 
 # Make bash check its window size after a process completes
 
@@ -191,6 +153,3 @@ ex () {
     fi
 }
 
-[ -d $HOME/.rbenv/ ]  && eval "$(rbenv init - zsh)"
-[ -f $HOME/.env ] && source $HOME/.env
-[ -f $HOME/.env ] && source $HOME/.env.private

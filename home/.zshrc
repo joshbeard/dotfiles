@@ -1,5 +1,16 @@
-# My local .zshrc
+# ===================================================================
+# Josh's .zshrc
+#
+# Common environment configuration is in .env
+# ===================================================================
 [ -f ~/.zprezto/runcoms/zshrc ] && source ~/.zprezto/runcoms/zshrc
+
+fpath=(/usr/local/share/zsh-completions $fpath)
+fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
+
+# Common environment configuration
+[ -f $HOME/.env ] && source $HOME/.env
+[ -f $HOME/.env.private ] && source $HOME/.env.private
 
 bindkey '^ ' autosuggest-accept
 
@@ -19,6 +30,8 @@ if (( $+commands[bundle] )); then
   alias bundle='nocorrect bundle'
 fi
 
+[ -d $HOME/.rbenv/ ]  && eval "$(rbenv init - zsh)"
+
 # Easily delete removed files from git index
 # From: https://github.com/ariejan/
 grm() {
@@ -29,10 +42,4 @@ function git_prompt_info() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
   echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
-
-[ -f $HOME/.env ] && source $HOME/.env
-[ -f $HOME/.env.private ] && source $HOME/.env.private
-
-[ -d $HOME/.rbenv/ ]  && eval "$(rbenv init - zsh)"
-fpath=(/usr/local/share/zsh-completions $fpath)
 
