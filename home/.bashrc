@@ -21,6 +21,10 @@ fi
 [ -f $HOME/.env ] && source $HOME/.env
 [ -f $HOME/.env.private ] && source $HOME/.env.private
 
+parse_git_branch() {
+       git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
 complete -cf sudo       # Tab complete for sudo
 
 ## shopt options
@@ -80,7 +84,7 @@ if [ $(id -u) -eq 0 ];
                 PS1="${txtylw}\w ${txtred}#${txtrst} "
         else
                 #PS1='\h:\W \u\$ '
-                PS1="${txtgrn}\w ${txtblu}\$${txtrst} "
+                PS1="${txtblu}\h${txtwht}:${txtgrn}\w${txtylw}\$(parse_git_branch)${txtblu} \$${txtrst} "
                 SUDO_PS1="${txtylw}\w ${txtred}#${txtrst} "
 fi
 
