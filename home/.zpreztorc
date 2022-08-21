@@ -23,28 +23,57 @@ zstyle ':prezto:*:*' color 'yes'
 
 # Set the Prezto modules to load (browse modules).
 # The order matters.
-zstyle ':prezto:load' pmodule \
-  'autosuggestions' \
-  'completion' \
-  'directory' \
-  'docker' \
-  'editor' \
-  'environment' \
-  'git' \
-  'history' \
-  'history-substring-search' \
-  'homebrew' \
-  'osx' \
-  'prompt' \
-  'ruby' \
-  'spectrum' \
-  'syntax-highlighting' \
-  'terminal' \
-  'tmux' \
-  'utility'
-
-# Disabled SSH plugin for Mac workstation to use the keychain
-#  'ssh' \
+case $(uname) in
+  Darwin)
+    zstyle ':prezto:load' pmodule \
+      'autosuggestions' \
+      'completion' \
+      'directory' \
+      'docker' \
+      'editor' \
+      'environment' \
+      'git' \
+      'history' \
+      'history-substring-search' \
+      'homebrew' \
+      'osx' \
+      'prompt' \
+      'ruby' \
+      'spectrum' \
+      'syntax-highlighting' \
+      'terminal' \
+      'tmux' \
+      'utility'
+  ;;
+  Linux)
+    zstyle ':prezto:load' pmodule \
+      'autosuggestions' \
+      'completion' \
+      'directory' \
+      'editor' \
+      'environment' \
+      'git' \
+      'history' \
+      'history-substring-search' \
+      'prompt' \
+      'spectrum' \
+      'syntax-highlighting' \
+      'terminal' \
+      'tmux' \
+      'utility'
+  ;;
+  OpenBSD)
+    zstyle ':prezto:load' pmodule \
+      'completion' \
+      'directory' \
+      'environment' \
+      'git' \
+      'history' \
+      'prompt' \
+      'syntax-highlighting' \
+      'utility'
+  ;;
+esac
 
 #
 # Editor
@@ -54,7 +83,7 @@ zstyle ':prezto:load' pmodule \
 zstyle ':prezto:module:editor' key-bindings 'vi'
 
 # Auto convert .... to ../..
-zstyle ':prezto:module:editor' dot-expansion 'yes'
+#zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 #
 # Git
@@ -160,12 +189,12 @@ zstyle ':prezto:module:syntax-highlighting' highlighters \
 #
 
 # Auto start a session when Zsh is launched in a local terminal.
-#zstyle ':prezto:module:tmux:auto-start' local 'yes'
+zstyle ':prezto:module:tmux:auto-start' local 'no'
 
 # Auto start a session when Zsh is launched in a SSH connection.
-zstyle ':prezto:module:tmux:auto-start' remote 'yes'
+zstyle ':prezto:module:tmux:auto-start' remote 'no'
 
 # Integrate with iTerm2.
-# zstyle ':prezto:module:tmux:iterm' integrate 'yes'
+# zstyle ':prezto:module:tmux:iterm' integrate 'no'
 
 zstyle ':prezto:module:autosuggestions' color 'yes'

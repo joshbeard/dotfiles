@@ -21,8 +21,6 @@ Plugin 'tpope/vim-surround'
 
 Plugin 'plasticboy/vim-markdown'
 
-Plugin 'joshbeard/timestamp.vim'
-
 Plugin 'majutsushi/tagbar'
 
 " window zooming
@@ -44,9 +42,6 @@ Plugin 'vim-ruby/vim-ruby'
 
 " wisely add end in ruby, endfunction/endif/more in vim script, etc
 Plugin 'tpope/vim-endwise'
-
-" sexy color theme
-Plugin 'joshbeard/vim-kolor'
 
 Plugin 'tomasr/molokai'
 Plugin 'chankaward/vim-railscasts-theme'
@@ -195,7 +190,5 @@ let g:vim_markdown_folding_disabled=1
 
 " Always show the airline bar
 set laststatus=2
-" vundler and puppet; Added by puppet_dev
-source ~/.vim_puppet
 set rtp+=~/.vim/bundle/Vundle.vim
 Plugin 'gmarik/Vundle.vim'
