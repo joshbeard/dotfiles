@@ -94,6 +94,21 @@ if version >= 703
   set colorcolumn=140
 endif
 
+if has('gui_running')
+  colorscheme slate
+  set guifont=terminal
+
+  set guioptions=m
+" Disable toolbar and menubar
+"  set guioptions=-M
+
+" http://www.dc.turkuamk.fi/docs/soft/vim/vim_gui.html
+"set guioptions=r
+
+" Only disable toolbar:
+"  set guioptions=-T
+endif
+
 " nerdtree
 map <leader>n :NERDTreeToggle<CR>
 map <C-n> :NERDTreeToggle<CR>
