@@ -12,12 +12,10 @@ These dotfiles are intended to be usable across my environments consisting of Ma
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 ```
 
-## Install homeshick or homesick
+## Install homeshick
 
 I now prefer [homeshick](https://github.com/andsens/homeshick) for
-its lighter dependency list. The repository works with _homeshick_ or _homesick_.
-
-__Install homeshick__ (requires bash):
+its lighter dependency list. The repository works with _homeshick_ or _homesick_ (Rubygem).
 
 ```shell
 git clone https://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshick
@@ -25,16 +23,6 @@ $HOME/.homesick/repos/homeshick/bin/homeshick clone joshbeard/dotfiles
 ```
 
 Refer to the [homeshick installation guide](https://github.com/andsens/homeshick/wiki/Installation) for more information.
-
-__Deprecated: Install homesick__ (requires Ruby):
-
-Installing the Ruby _homesick_ gem isn't necessary if _homeshick_ is used.
-
-```shell
-gem install homesick
-homesick clone joshbeard/dotfiles
-homesick symlink dotfiles
-```
 
 ### Install Dependencies
 
@@ -63,21 +51,12 @@ vim +PluginInstall +qall
 ### Updating with homeshick
 
 ```shell
+homeshick pull
 homeshick refresh
-```
-
-### Updating with homesick
-
-```shell
-homesick pull
-```
-
-And also useful is
-
-```shell
-homesick symlink
+homeshick symlink
 ```
 
 ## Other things
 
-[homebrew-notifier](https://github.com/grantovich/homebrew-notifier)
+* [homebrew-notifier](https://github.com/grantovich/homebrew-notifier): notifications on Mac for homebrew updates
+
