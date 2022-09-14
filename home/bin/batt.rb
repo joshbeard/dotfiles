@@ -1,6 +1,9 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 #
+# This retrieves the battery status on a mac via the 'pmset' tool
+# to pass into tmux. This returns the percentage.
+#
 # Usage example:
 #    /usr/bin/pmset -g batt | batt.rb
 #
