@@ -21,7 +21,7 @@ Xft.hintstyle:    hintmedium
 !! urxvt - General
 !! ------------------------------------------------------------------
 URxvt*termName:        rxvt-256color
-URxvt*geometry:        80x60
+URxvt*geometry:        80x30
 URxvt*scrollBar:       false
 URxvt*matcher.button:  1
 URxvt*cursorBlink:     true
@@ -81,7 +81,7 @@ URxvt*color7:  #dedede
 URxvt*color15: #f2f2f2
 
 !! Copy Paste & Other Extensions
-URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
+#URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
 URxvt.copyCommand: xclip -i -selection clipboard
 URxvt.pasteCommand: xclip -o -selection clipboard
 URxvt.keysym.M-c: perl:clipboard:copy
@@ -90,9 +90,10 @@ URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-s: perl:keyboard-select:search
 URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.urlLauncher: firefox
+
+URxvt.urlLauncher: chromium
 URxvt.underlineURLs: true
-URxvt.urlButton: 1
+#URxvt.urlButton: 1
 
 !! Copy/paste keybinding Ctrl+Shift+c / Ctrl+Shift+v
 !! From https://stackoverflow.com/questions/39884093/rebinding-copy-paste-in-urxvt
