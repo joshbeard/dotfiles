@@ -48,8 +48,6 @@ vim +PluginInstall +qall
 
 ## Updating
 
-### Updating with homeshick
-
 ```shell
 homeshick pull
 homeshick refresh
