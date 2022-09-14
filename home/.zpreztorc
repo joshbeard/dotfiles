@@ -56,6 +56,7 @@ case $(uname) in
       'history' \
       'history-substring-search' \
       'prompt' \
+      'ssh' \
       'spectrum' \
       'syntax-highlighting' \
       'terminal' \

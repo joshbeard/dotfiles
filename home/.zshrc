@@ -3,48 +3,34 @@
 #
 # Common environment configuration is in .env
 # ===================================================================
+# Load zprezto
 [ -f ~/.zprezto/runcoms/zshrc ] && source ~/.zprezto/runcoms/zshrc
 
+bindkey '^ ' autosuggest-accept
+
+# Completions
 fpath=(/usr/local/share/zsh-completions $fpath)
 fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
+
+if which saml2aws >>/dev/null 2>&1; then
+  eval "$(saml2aws --completion-script-zsh)"
+fi
 
 # Common environment configuration
 [ -f $HOME/.env ] && source $HOME/.env
 [ -f $HOME/.env.private ] && source $HOME/.env.private
 
-bindkey '^ ' autosuggest-accept
-
-# tmux
-if (( $+commands[tmux] )); then
-  alias tmux='tmux -2'
-  alias tl='tmux ls'
-  alias ta='tmux attach -t'
-  alias tr='tmux rename-session -t'
+# Deal with "dumb" terminals and ttys
+#if [[ "$XDG_SESSION_TYPE" == 'tty' ]]; then
+#  prompt josh
+#fi
+if [[ "$TERM" == 'linux' ]]; then
+  #zstyle ':prezto:module:prompt' theme 'josh'
+  prompt josh
 fi
-
-if (( $+commands[bundle] )); then
-  alias bi='bundle install'
-  alias be='bundle exec'
-  alias bl='bundle list'
-  # Disable autocorrection for 'bundle'
-  alias bundle='nocorrect bundle'
-fi
-
-[ -d $HOME/.rbenv/ ]  && eval "$(rbenv init - zsh)"
-
-# Easily delete removed files from git index
-# From: https://github.com/ariejan/
-grm() {
-  git status | grep "deleted:" | awk '{print $3}' | xargs git rm --ignore-unmatch
-}
 
 function git_prompt_info() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
   echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
-
-if [[ "$TERM" == 'linux' ]]; then
-  #zstyle ':prezto:module:prompt' theme 'josh'
-  prompt josh
-fi
 
