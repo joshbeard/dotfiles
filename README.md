@@ -1,8 +1,10 @@
 # Josh's Dotfiles
 
 I'm using [homeshick](https://github.com/andsens/homeshick) to maintain
-my dotfiles. I use [zsh](https://www.zsh.org/) on my workstation with
-[prezto](https://github.com/sorin-ionescu/prezto).
+my dotfiles. I use [zsh](https://www.zsh.org/) on my workstations with
+[prezto](https://github.com/sorin-ionescu/prezto). I also use bash.
+
+These dotfiles are intended to be usable across my environments consisting of MacOS, Linux, and BSD.
 
 ## Install [prezto](https://github.com/sorin-ionescu/prezto)
 
@@ -24,7 +26,7 @@ $HOME/.homesick/repos/homeshick/bin/homeshick clone joshbeard/dotfiles
 
 Refer to the [homeshick installation guide](https://github.com/andsens/homeshick/wiki/Installation) for more information.
 
-__Install homesick__ (requires Ruby):
+__Deprecated: Install homesick__ (requires Ruby):
 
 Installing the Ruby _homesick_ gem isn't necessary if _homeshick_ is used.
 
