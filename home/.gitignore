@@ -52,3 +52,5 @@ Thumbs.db
 ###########
 .bundle/
 
+# Snyk plugin
+.dccache
