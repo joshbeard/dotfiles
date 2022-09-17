@@ -207,3 +207,6 @@ let g:vim_markdown_folding_disabled=1
 set laststatus=2
 set rtp+=~/.vim/bundle/Vundle.vim
 Plugin 'gmarik/Vundle.vim'
+Plugin 'vimwiki/vimwiki'
+
+let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
