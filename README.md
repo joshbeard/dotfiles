@@ -46,6 +46,11 @@ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 ```
 
+## Other Steps
+
+1. Adjust the path to the home directory specified in [`home/.gnupg/gpg-agent.conf`](home/.gnupg/gpg-agent.conf), if necessary.
+2. Git GPG signing is enabled by default. Disable it in [`home/.gitconfig.personal`](home/.gitconfig.personal), if necessary.
+
 ## Updating
 
 ```shell
