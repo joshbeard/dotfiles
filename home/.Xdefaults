@@ -109,3 +109,23 @@ URxvt.keysym.C-M-v:    builtin-string:
 URxvt.keysym.C-S-0x43: eval:selection_to_clipboard
 URxvt.keysym.C-S-0x56: eval:paste_clipboard
 
+XLock.mode: matrix
+XLock.erasedelay: 500
+#XLock.fpsfont:  -misc-fixed-medium-r-*-*-13-*-*-*-*-*-*
+XLock.fpsfont:        xft:DejaVu Sans Mono:autohint=true:size=8,xft:Inconsolata\ for\ Powerline:autohint=true:size=8
+XLock.timeelapsed: on
+XLock.timeout: 20
+#XLock.font: -misc-fixed-medium-r-*-*-13-*-*-*-*-*-*
+XLock.font:        xft:DejaVu Sans Mono:autohint=true:size=8,xft:Inconsolata\ for\ Powerline:autohint=true:size=8
+XLock.username:
+XLock.password:
+XLock.info:
+XLock.validate: validating ...
+XLock.invalid: failed.
+XLock.invalidCapsLock: caps lock is enabled.
+XLock.attempt:  failed attempt.
+XLock.attempts:  failed attempts.
+#XLock.messagefont:  -misc-fixed-medium-r-*-*-13-*-*-*-*-*-*
+XLock.messagefont:        xft:DejaVu Sans Mono:autohint=true:size=8,xft:Inconsolata\ for\ Powerline:autohint=true:size=8
+XLock.foreground: Gray
+XLock.description: off
