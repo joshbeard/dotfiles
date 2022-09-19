@@ -4,13 +4,7 @@ I'm using [homeshick](https://github.com/andsens/homeshick) to maintain
 my dotfiles. I use [zsh](https://www.zsh.org/) on my workstations with
 [prezto](https://github.com/sorin-ionescu/prezto). I also use bash.
 
-These dotfiles are intended to be usable across my environments consisting of MacOS, Linux, and BSD.
-
-## Install [prezto](https://github.com/sorin-ionescu/prezto)
-
-```shell
-git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-```
+These dotfiles are intended to be usable across my environments consisting of macOS, Linux, and BSD.
 
 ## Install homeshick
 
@@ -24,12 +18,14 @@ $HOME/.homesick/repos/homeshick/bin/homeshick clone joshbeard/dotfiles
 
 Refer to the [homeshick installation guide](https://github.com/andsens/homeshick/wiki/Installation) for more information.
 
-### Install Dependencies
 
-On a Mac with _homebrew_:
+## Install [prezto](https://github.com/sorin-ionescu/prezto) for ZSH
+
+This isn't required. I mostly use zsh with prezto day-to-day on my workstations, but my dotfiles repo contains functional configs even without prezto
+for zsh.
 
 ```shell
-brew install reattach-to-user-namespace
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 ```
 
 ## Vim
@@ -46,11 +42,6 @@ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 ```
 
-## Other Steps
-
-1. Adjust the path to the home directory specified in [`home/.gnupg/gpg-agent.conf`](home/.gnupg/gpg-agent.conf), if necessary.
-2. Git GPG signing is enabled by default. Disable it in [`home/.gitconfig.personal`](home/.gitconfig.personal), if necessary.
-
 ## Updating
 
 ```shell
@@ -61,5 +52,6 @@ homeshick symlink
 
 ## Other things
 
+* Git GPG signing is enabled by default. Disable it in [`home/.gitconfig.personal`](home/.gitconfig.personal), if necessary.
 * [homebrew-notifier](https://github.com/grantovich/homebrew-notifier): notifications on Mac for homebrew updates
 
