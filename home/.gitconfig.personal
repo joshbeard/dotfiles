@@ -1,5 +1,0 @@
-[user]
-  email = josh@joshbeard.me
-  signingkey = F9BE548EC3641B41
-[commit]
-	gpgsign = true
