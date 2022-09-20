@@ -50,6 +50,9 @@ Plugin 'zefei/cake16'
 " http://vimcolors.com/54/Tomorrow-Night-Eighties/dark
 Plugin 'chriskempson/vim-tomorrow-theme'
 
+" Transparent background
+Plugin 'tribela/vim-transparent'
+
 " a light colorscheme
 Plugin 'Pychimp/vim-sol'
 " light/pleasant colorscheme
