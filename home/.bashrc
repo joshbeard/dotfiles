@@ -20,6 +20,11 @@ fi
 # Common environment configuration (sh, bash, zsh)
 [ -f $HOME/.env ] && source $HOME/.env
 [ -f $HOME/.env.private ] && source $HOME/.env.private
+[ -f $HOME/.env.local ] && source $HOME/.env.local
+
+if [ ! -z "$NVM_DIR" ]; then
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+fi
 
 parse_git_branch() {
        git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
