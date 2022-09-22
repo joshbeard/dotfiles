@@ -89,6 +89,8 @@ zstyle ':prezto:module:editor' key-bindings 'vi'
 # Git
 #
 
+# Disable the built-in git aliases
+zstyle ':prezto:module:git:alias' skip 'yes'
 # Ignore submodules when they are 'dirty', 'untracked', 'all', or 'none'.
 # zstyle ':prezto:module:git:status:ignore' submodules 'all'
 
@@ -163,7 +165,6 @@ zstyle ':prezto:module:syntax-highlighting' highlighters \
   'main' \
   'brackets' \
   'pattern' \
-  'cursor' \
   'root'
 #
 # Set syntax highlighting styles.
