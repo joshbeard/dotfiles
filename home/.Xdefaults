@@ -27,10 +27,13 @@ URxvt*matcher.button:  1
 URxvt*cursorBlink:     true
 URxvt*cursorUnderline: false
 
+! Composite Transparency
+URxvt*background: rgba:0000/0000/0200/c800
+
 ! Window tinting/background
-URxvt.transparent:   true
-URxvt*fading:        0
-URxvt*shading:       40
+! URxvt.transparent:   true
+! URxvt*shading:       20
+URxvt*fading:        #111111
 URxvt*inheritPixmap: False
 
 ! urxvt fonts
@@ -53,7 +56,7 @@ URxvt*colorIT:     #c37561
 URxvt*colorUL:     #a0a57e
 
 !Background / Foreground
-URxvt*background: #202020
+!URxvt*background: #202020
 URxvt*foreground: #ddccbb
 !Black / Light black
 URxvt*color0: #222222
@@ -81,19 +84,19 @@ URxvt*color7:  #dedede
 URxvt*color15: #f2f2f2
 
 !! Copy Paste & Other Extensions
-#URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
-URxvt.copyCommand: xclip -i -selection clipboard
-URxvt.pasteCommand: xclip -o -selection clipboard
-URxvt.keysym.M-c: perl:clipboard:copy
-URxvt.keysym.M-v: perl:clipboard:paste
-URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
-URxvt.keysym.M-Escape: perl:keyboard-select:activate
-URxvt.keysym.M-s: perl:keyboard-select:search
-URxvt.keysym.M-u: perl:url-select:select_next
+!URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
+!URxvt.copyCommand: xclip -i -selection clipboard
+!URxvt.pasteCommand: xclip -o -selection clipboard
+!URxvt.keysym.M-c: perl:clipboard:copy
+!URxvt.keysym.M-v: perl:clipboard:paste
+!URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+!URxvt.keysym.M-Escape: perl:keyboard-select:activate
+!URxvt.keysym.M-s: perl:keyboard-select:search
+!URxvt.keysym.M-u: perl:url-select:select_next
 
 URxvt.urlLauncher: chromium
 URxvt.underlineURLs: true
-#URxvt.urlButton: 1
+!URxvt.urlButton: 1
 
 !! Copy/paste keybinding Ctrl+Shift+c / Ctrl+Shift+v
 !! From https://stackoverflow.com/questions/39884093/rebinding-copy-paste-in-urxvt
@@ -111,11 +114,11 @@ URxvt.keysym.C-S-0x56: eval:paste_clipboard
 
 XLock.mode: matrix
 XLock.erasedelay: 500
-#XLock.fpsfont:  -misc-fixed-medium-r-*-*-13-*-*-*-*-*-*
+!XLock.fpsfont:  -misc-fixed-medium-r-*-*-13-*-*-*-*-*-*
 XLock.fpsfont:        xft:DejaVu Sans Mono:autohint=true:size=8,xft:Inconsolata\ for\ Powerline:autohint=true:size=8
 XLock.timeelapsed: on
 XLock.timeout: 20
-#XLock.font: -misc-fixed-medium-r-*-*-13-*-*-*-*-*-*
+!XLock.font: -misc-fixed-medium-r-*-*-13-*-*-*-*-*-*
 XLock.font:        xft:DejaVu Sans Mono:autohint=true:size=8,xft:Inconsolata\ for\ Powerline:autohint=true:size=8
 XLock.username:
 XLock.password:
@@ -125,7 +128,7 @@ XLock.invalid: failed.
 XLock.invalidCapsLock: caps lock is enabled.
 XLock.attempt:  failed attempt.
 XLock.attempts:  failed attempts.
-#XLock.messagefont:  -misc-fixed-medium-r-*-*-13-*-*-*-*-*-*
+!XLock.messagefont:  -misc-fixed-medium-r-*-*-13-*-*-*-*-*-*
 XLock.messagefont:        xft:DejaVu Sans Mono:autohint=true:size=8,xft:Inconsolata\ for\ Powerline:autohint=true:size=8
 XLock.foreground: Gray
 XLock.description: off
