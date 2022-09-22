@@ -1,89 +1,90 @@
 [user]
-  name = Josh Beard
-  email = josh@joshbeard.me
-  signingkey = F9BE548EC3641B41
+name = Josh Beard
+email = josh@joshbeard.me
+signingkey = F9BE548EC3641B41
 
 [commit]
-  gpgsign = true
+gpgsign = true
 
 # Overrides for work/professional use
 [includeIf "gitdir:~/Projects/work"]
-  path = ~/.gitconfig.work
+path = ~/.gitconfig.work
 
 [includeIf "gitdir:~/Projects/wasp"]
-  path = ~/.gitconfig.work
+path = ~/.gitconfig.work
 
 [includeIf "gitdir:~/Projects/usgs/"]
-  path = ~/.gitconfig.work
+path = ~/.gitconfig.work
 
 [core]
-  autocrlf = false
-  safecrlf = false
-  editor = vim
-  excludesfile = ~/.gitignore
+autocrlf = false
+safecrlf = false
+editor = vim
+excludesfile = ~/.gitignore
+whitespace = cr-at-eol
 
 [alias]
-  co = checkout
-  ci = commit
-  st = status
-  br = branch
-  lg = "log --pretty=format:'%C(yellow)%h%C(reset) %C(blue)%an%C(reset) %C(cyan)%cr%C(reset) %s %C(green)%d%C(reset) %C(red)%G? %GS %GK%C(reset)' --graph --date-order"
-  fa = "fetch --all"
-  type = cat-file -t
-  dump = cat-file -p
-  last = log -1 HEAD
-  ds = diff --staged
-  bv = branch -vv
-  l1 = log --oneline --decorate
-  # git reauthor $START..$END
-  reauthor = !sh -c 'eval `git log --reverse --topo-order --pretty=format:\"git cherry-pick %H &&  git commit --amend -C %H --author=\\\"%aN <%aE>\\\" && \" $0 ` "echo success" '
-  mr = !sh -c 'git fetch $1 merge-requests/$2/head:mr-$1-$2 && git checkout mr-$1-$2' -
+co = checkout
+ci = commit
+st = status
+br = branch
+lg = "log --pretty=format:'%C(yellow)%h%C(reset) %C(blue)%an%C(reset) %C(cyan)%cr%C(reset) %s %C(green)%d%C(reset) %C(red)%G? %GS %GK%C(reset)' --graph --date-order"
+fa = "fetch --all"
+type = cat-file -t
+dump = cat-file -p
+last = log -1 HEAD
+ds = diff --staged
+bv = branch -vv
+l1 = log --oneline --decorate
+# git reauthor $START..$END
+reauthor = !sh -c 'eval `git log --reverse --topo-order --pretty=format:\"git cherry-pick %H &&  git commit --amend -C %H --author=\\\"%aN <%aE>\\\" && \" $0 ` "echo success" '
+mr = !sh -c 'git fetch $1 merge-requests/$2/head:mr-$1-$2 && git checkout mr-$1-$2' -
 
 [color]
-  ui = auto
+ui = auto
 
 [color "branch"]
-  current = yellow reverse
-  local = yellow
-  remote = green
+current = yellow reverse
+local = yellow
+remote = green
 
 [color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
+meta = yellow bold
+frag = magenta bold
+old = red bold
+new = green bold
 
 [color "status"]
-  added = green
-  changed = yellow
-  untracked = red
+added = green
+changed = yellow
+untracked = red
 
 # I'm disabling this for performance
 # It just adds a little prompt indicator of the repo status, but is
 # painfully slow on massive repos.
 [oh-my-zsh]
-  hide-status = 1
+hide-status = 1
 
 [push]
-  default = simple
+default = simple
 
 [hub]
-  protocol = https
+protocol = https
 
 [github]
-  user = joshbeard
+user = joshbeard
 
 [filter "media"]
-  required = true
-  clean = git media clean %f
-  smudge = git media smudge %f
+required = true
+clean = git media clean %f
+smudge = git media smudge %f
 
 [filter "hawser"]
-  clean = git hawser clean %f
-  smudge = git hawser smudge %f
-  required = true
+clean = git hawser clean %f
+smudge = git hawser smudge %f
+required = true
 [filter "lfs"]
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+process = git-lfs filter-process
+required = true
