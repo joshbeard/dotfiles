@@ -23,7 +23,8 @@ set number
 set ruler
 set smartindent
 set t_Co=256
-set textwidth=140
+set textwidth=80
+"set textwidth=140
 set foldmethod=indent
 set foldlevelstart=99
 
@@ -63,7 +64,7 @@ Plugin 'jistr/vim-nerdtree-tabs'
 " highlights open files; close buffer from nerdtree
 "Plugin 'PhilRunninger/nerdtree-buffer-ops'
 " fuzzy file,buffer,mru,tag,... finder
-Plugin 'kien/ctrlp.vim'
+"Plugin 'kien/ctrlp.vim'
 
 " keyword completion cache
 "Plugin 'Shougo/neocomplcache.vim'
@@ -92,20 +93,24 @@ Plugin 'preservim/nerdcommenter'
 Plugin 'tpope/vim-fugitive'
 
 " Ruby completion
-Plugin 'vim-ruby/vim-ruby'
+"Plugin 'vim-ruby/vim-ruby'
 
 " wisely add end in ruby, endfunction/endif/more in vim script, etc
-Plugin 'tpope/vim-endwise'
+"Plugin 'tpope/vim-endwise'
 
 " Color schemes
-Plugin 'tomasr/molokai'
-Plugin 'chankaward/vim-railscasts-theme'
-Plugin 'zefei/cake16'
-Plugin 'jnurmine/Zenburn'
+"Plugin 'tomasr/molokai'
+"Plugin 'chankaward/vim-railscasts-theme'
+"Plugin 'zefei/cake16'
+"Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'NLKNguyen/papercolor-theme'
+"Plugin 'sainnhe/everforest'
+" This requires 'termguicolors'
+"Plugin 'bluz71/vim-nightfly-guicolors'
 
 " http://vimcolors.com/54/Tomorrow-Night-Eighties/dark
-Plugin 'chriskempson/vim-tomorrow-theme'
+"Plugin 'chriskempson/vim-tomorrow-theme'
 
 " Transparent background
 Plugin 'tribela/vim-transparent'
@@ -116,17 +121,18 @@ Plugin 'tribela/vim-transparent'
 " Plugin 'jnurmine/Zenburn'
 
 " Display lines at indentation levels
-Plugin 'Yggdroot/indentLine.git'
+" Plugin 'Yggdroot/indentLine.git'
 
 Plugin 'vim-syntastic/syntastic'
 
 " Fold improvements
-Plugin 'tmhedberg/SimpylFold'
+" FIXME: serious lag with this enabled
+"Plugin 'tmhedberg/SimpylFold'
 
 " Python
 Plugin 'vim-python/python-syntax'
 Plugin 'vim-scripts/indentpython.vim'
-Plugin 'nvie/vim-flake8'
+"Plugin 'nvie/vim-flake8'
 
 call vundle#end()
 
@@ -138,8 +144,10 @@ if has('gui_running')
   set guioptions=m
 else
   " colorscheme
-  colorscheme railscasts
+  "colorscheme railscasts
   " colorscheme zenburn
+  set background=dark
+  colorscheme PaperColor
 endif
 
 "autocmd highlight LiteralTabs ctermbg=red guibg=red
@@ -153,7 +161,7 @@ autocmd ColorScheme * hi ColorColumn ctermbg=101 guibg=lightgrey
 
 " This could perform poorly.
 " See https://github.com/vim-python/python-syntax for configuration.
-let python_highlight_all=1
+let python_highlight_all=0
 
 " Comment color
 "autocmd ColorScheme * highlight comment ctermfg=cyan
