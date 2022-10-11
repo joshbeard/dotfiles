@@ -54,3 +54,6 @@ Thumbs.db
 
 # Snyk plugin
 .dccache
+
+# Python cache
+__pycache__/
