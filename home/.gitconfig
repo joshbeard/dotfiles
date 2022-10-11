@@ -7,13 +7,13 @@ signingkey = F9BE548EC3641B41
 gpgsign = true
 
 # Overrides for work/professional use
-[includeIf "gitdir:~/Projects/work"]
+[includeIf "gitdir:~/Projects/work/"]
 path = ~/.gitconfig.work
 
-[includeIf "gitdir:~/Projects/wasp"]
+[includeIf "gitdir:~/work/"]
 path = ~/.gitconfig.work
 
-[includeIf "gitdir:~/Projects/usgs/"]
+[includeIf "gitdir:~/dev/work/"]
 path = ~/.gitconfig.work
 
 [core]
