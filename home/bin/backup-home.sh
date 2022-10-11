@@ -38,6 +38,10 @@ notify-send -t 2500 -a Sysbackup -u normal "Starting backup of home."
 logger -t backup_josh -s "Backing up crontab to ${HOME}/.backups/crontab"
 crontab -l >| "${HOME}/.backups/crontab"
 
+if which pacman 2>&1 > /dev/null; then
+  pacman -Q >| "${HOME}/.backups/pacman-list.txt"
+fi
+
 # Run sysbackup with config
 ${SYSBACKUP} --config ${CONFIG}
 
