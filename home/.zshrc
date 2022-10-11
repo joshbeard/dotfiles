@@ -2,6 +2,20 @@
 # Josh's .zshrc
 #
 # Common environment configuration is in .env
+#
+# Ordering of files:
+#   /etc/zsh/zshenv
+#   ${HOME}/.zshenv
+#   /etc/zsh/zprofile (login shells)
+#   ${HOME}/.zprofile (login shells)
+#   /etc/zsh/zshrc (interactive shells)
+#   ${HOME}/.zshrc (interactive shells) -> zprezto
+#   /etc/zsh/zlogin (login shells)
+#   ${HOME}/.zlogin (login shells)
+#
+# On logout:
+#   ${HOME}/.zlogout
+#   /etc/zsh/zlogout
 # ===================================================================
 # Load zprezto
 [ -f ~/.zprezto/runcoms/zshrc ] && source ~/.zprezto/runcoms/zshrc
