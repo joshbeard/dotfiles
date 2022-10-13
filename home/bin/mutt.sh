@@ -6,9 +6,12 @@
 # Dependencies: xfce4-terminal, wmctrl
 
 WINDOW_NAME="mutt"
+TERMINAL=xfce4-terminal
 
-if wmctrl -l | grep "${WINDOW_NAME}" 2>&1 >/dev/null; then
-  wmctrl -R "${WINDOW_NAME}"
+winid=$(wmctrl -l -x | grep "${TERMINAL}" | grep "${WINDOW_NAME}" | cut -d' ' -f1)
+
+if [ "x${winid}" != "x" ]; then
+  wmctrl -i -R "${winid}"
 else
   xfce4-terminal -T "${WINDOW_NAME}" --geometry 135x40 -x mutt
 fi
