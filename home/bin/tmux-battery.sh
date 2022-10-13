@@ -16,7 +16,11 @@ case `uname -s` in
     case $vendor in
       Apple\ Inc*)
         # MacBook Pro (2015)
-        cat /sys/class/power_supply/BAT0/capacity
+        if command -v acpi; then
+          acpi -b | grep 'Battery 0' | grep -oP '(?<=, )\d+(?=%)'
+        else
+          cat /sys/class/power_supply/BAT0/capacity
+        fi
         ;;
       Acer*)
         # Acer Netbook
