@@ -10,12 +10,25 @@ case `uname -s` in
     /usr/bin/pmset -g batt | ~/bin/batt.rb
   ;;
   Linux)
-    # My netbook's battery
-    if [ -f "/sys/class/power_supply/BAT1/capacity" ]; then
-      /usr/bin/cat /sys/class/power_supply/BAT1/capacity
-    fi
+    # Determine what our battery status is
+    vendor=$(cat /sys/devices/virtual/dmi/id/board_vendor)
+
+    case $vendor in
+      Apple\ Inc*)
+        # MacBook Pro (2015)
+        cat /sys/class/power_supply/BAT0/capacity
+        ;;
+      Acer*)
+        # Acer Netbook
+        cat /sys/class/power_supply/BAT1/capacity
+        ;;
+      *)
+        # Just run otherwise
+        echo '?'
+    esac
   ;;
   *)
+    echo '?'
   ;;
 esac
 
