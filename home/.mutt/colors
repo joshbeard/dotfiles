@@ -18,7 +18,8 @@ color tilde green black
 color bold brightyellow black
 color markers brightcyan black
 
-color prompt yellow green
+#color prompt yellow green
+color prompt black magenta
 
 ## Colours for items in the index
 color index brightred default ~O
