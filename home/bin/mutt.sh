@@ -8,11 +8,24 @@
 WINDOW_NAME="mutt"
 TERMINAL=xfce4-terminal
 
-winid=$(wmctrl -l -x | grep "${TERMINAL}" | grep "${WINDOW_NAME}" | cut -d' ' -f1)
+mutt_init() {
+  winid=$(wmctrl -l -x | grep "${TERMINAL}" | grep "${WINDOW_NAME}" | cut -d' ' -f1)
 
-if [ "x${winid}" != "x" ]; then
-  wmctrl -i -R "${winid}"
+  if [ "x${winid}" != "x" ]; then
+    wmctrl -i -R "${winid}"
+  else
+    xfce4-terminal -T "${WINDOW_NAME}" --geometry 135x40 -x ${HOME}/bin/mutt.sh run
+  fi
+}
+
+mutt_run() {
+  set -a
+  source ~/.env
+  mutt
+}
+
+if [ "$1" == "run" ]; then
+  mutt_run
 else
-  xfce4-terminal -T "${WINDOW_NAME}" --geometry 135x40 -x mutt
+  mutt_init
 fi
-
