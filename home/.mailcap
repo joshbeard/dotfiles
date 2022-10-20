@@ -1,3 +1,18 @@
-text/html; "$BROWSER" %s &; test=test -n "$DISPLAY"; needsterminal;
+application/x-bzip2;        als %s; copiousoutput; nametemplate=%s.tar.bz2
+application/x-compress;     als %s; copiousoutput; nametemplate=%s.z
+application/x-gzip;         als %s; copiousoutput; nametemplate=%s.tar.gz
+application/x-java-archive; als %s; copiousoutput; nametemplate=%s.jar
+application/x-rar;          als %s; copiousoutput; nametemplate=%s.rar
+application/x-tar;          als %s; copiousoutput; nametemplate=%s.tar
+application/x-xz;           als %s; copiousoutput; nametemplate=%s.tar.xz
+application/x-zip;          als %s; copiousoutput; nametemplate=%s.zip
+application/zip;            als %s; copiousoutput; nametemplate=%s.zip
+
+application/ics; mutt-ics; copiousoutput
+application/pdf; firewarden -q -c zathura %s
+image/*; ristretto %s
+text/calendar; mutt-ics; copiousoutput
+text/html; "$BROWSER" %s; test=test -n "$DISPLAY"; needsterminal; nametemplate=%s.html
 text/html; w3m -I %{charset} -T text/html; copiousoutput;
+text/plain; vim %s ; needsterminal
 
