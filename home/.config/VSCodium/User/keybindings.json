@@ -9,5 +9,10 @@
     "key":     "alt+tab",
     "command": "workbench.action.focusActiveEditorGroup",
     "when":    "terminalFocus"
+},
+{
+    "key": "enter",
+    "command": "renameFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
 }
 ]
