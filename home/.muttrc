@@ -35,6 +35,7 @@ set header_cache = ~/Mail/cache/headers
 set message_cachedir = ~/.cache/mutt
 set mailcap_path = ~/.mailcap
 set tmpdir = ~/.tmp
+set trash=+"Trash"
 
 #set alias_file = ~/.mutt/aliases
 #set alias_format = "%4n %t %-20a %r"

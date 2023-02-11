@@ -7,11 +7,14 @@ filetype plugin on
 filetype plugin indent on
 syntax on
 
+let mapleader = ","
+
 " turn off auto adding comments on next line
 " so you can cut and paste reliably
 " http://vimdoc.sourceforge.net/htmldoc/change.html#fo-table
 set fo=tcq
-set formatoptions-=cro
+"set formatoptions-=cro
+set formatoptions-=qrn1
 set modeline
 set modelines=1
 
@@ -19,14 +22,33 @@ set tabstop=2
 set expandtab
 set softtabstop=2
 set shiftwidth=2
+set wrap
 set number
 set ruler
 set smartindent
 set t_Co=256
-set textwidth=80
+set textwidth=79
 "set textwidth=140
 set foldmethod=indent
 set foldlevelstart=99
+
+" Show invisible characters (e.g. tabs) with special characters
+set list
+"set listchars=tab:▸\ ,eol:¬
+set listchars=tab:▸\ 
+
+" Search casing
+" all-lowercase will be case-insensitive; mixed characters are case-sensitive.
+set ignorecase
+set smartcase
+
+" Highlight search results
+set incsearch
+set showmatch
+set hlsearch
+
+" apply substitutions globally by default
+set gdefault
 
 " Always show the status bar
 set laststatus=2
@@ -134,6 +156,8 @@ Plugin 'vim-python/python-syntax'
 Plugin 'vim-scripts/indentpython.vim'
 "Plugin 'nvie/vim-flake8'
 
+Plugin 'vim-scripts/YankRing.vim'
+
 call vundle#end()
 
 " ---- Styling -----------------------------------------------------------------
@@ -197,6 +221,30 @@ map <Leader>s :Gstatus<CR>
 map <Leader>c :Gcommit<CR>
 map <Leader>= <C-w>=
 
+" clear search
+nnoremap <leader><space> :noh<cr>
+
+" Press tab to jump between matching bracket pairs
+nnoremap <tab> %
+vnoremap <tab> %
+
+" Exit back to normal mode by typing 'jj' twice
+" inoremap jj <ESC>
+
+" Navigate by screen line instead of file line (wrapped long lines)
+nnoremap j gj
+nnoremap k gk
+
+" Make ; act like :
+nnoremap ; :
+
+" <leader>v to select text that was just pasted
+nnoremap <leader>v V`]
+
+" edit vimrc on the fly
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+
+
 " nerdtree
 map <leader>n :NERDTreeToggle<CR>
 map <C-n> :NERDTreeToggle<CR>
@@ -207,8 +255,15 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Open vertical split and switch to it
+nnoremap <leader>w <C-w>v<C-w>l
+
 " Enable folding with the spacebar
 nnoremap <space> za
+
+" Disable Vim's regex pattern
+nnoremap / /\v
+vnoremap / /\v
 
 " Toggle scheme backgrounds (dark/light)
 call togglebg#map("<F5>")
@@ -240,6 +295,15 @@ au BufNewFile,BufRead *.js, *.html, *.css, *.rb
 
 " Python
 au BufNewFile,BufRead *.py
+  \set tabstop=4
+  \set softtabstop=4
+  \set shiftwidth=4
+  \set textwidth=79
+  \set expandtab
+  \set autoindent
+  \set fileformat=unix
+
+au BufNewFile,BufRead *.go
   \set tabstop=4
   \set softtabstop=4
   \set shiftwidth=4
