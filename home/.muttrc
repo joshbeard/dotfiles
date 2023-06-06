@@ -16,8 +16,15 @@ set use_from = yes
 # values. Example:
 #   $ gnome-keyring-query set mail:password
 #   $ gnome-keyring-query set mail:smtp_url
-set smtp_pass = `gnome-keyring-query get mail:password`
-set smtp_url = `gnome-keyring-query get mail:smtp_url`
+
+# Retrieve from gnome-keyring
+#set smtp_pass = `gnome-keyring-query get mail:password`
+#set smtp_url = `gnome-keyring-query get mail:smtp_url`
+
+# Retrieve from 1password
+set smtp_pass = ` op item get "Migadu Mail - josh@joshbeard.me" --fields type=concealed --format json | jq -r '.value'`
+set smtp_url = `op item get "Migadu Mail - josh@joshbeard.me" --fields smtp_url`
+
 set ssl_force_tls = yes
 
 #set imap_check_subscribed
