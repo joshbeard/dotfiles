@@ -6,6 +6,7 @@
 
 SYSBACKUP=${HOME}/.local/sysbackup/sysbackup.sh
 CONFIG=${HOME}/.config/sysbackup/home.conf
+SKIP_ON_BATTERY=false
 
 # Determine what our battery status is
 vendor=$(cat /sys/devices/virtual/dmi/id/board_vendor)
@@ -24,7 +25,7 @@ case $vendor in
     ON_BATTERY=1
 esac
 
-if [ "$ON_BATTERY" == "0" ]; then
+if [ "$ON_BATTERY" == "0" && "$SKIP_ON_BATTERY" == "true" ]; then
   logger -t backup_josh -s "On battery power, skipping backup"
   exit 0
 fi
