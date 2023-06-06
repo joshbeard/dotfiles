@@ -32,7 +32,13 @@ Refer to the [homeshick installation
 guide](https://github.com/andsens/homeshick/wiki/Installation) for more
 information.
 
-## Vim
+## Vim and NeoVim
+
+### Install NeoVim Plugins
+
+```shell
+nvim +PackerCompile +PackerSync
+```
 
 ### Install vundle for Vim
 
@@ -42,8 +48,10 @@ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 ### Install Vim plugins
 
+NOTE: I have `vim` aliased to `nvim` if it's installed.
+
 ```shell
-vim +PluginInstall +qall
+/usr/bin/env vim +PluginInstall +qall
 ```
 
 ## Updating
