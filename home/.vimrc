@@ -18,6 +18,8 @@ set formatoptions-=qrn1
 set modeline
 set modelines=1
 
+set relativenumber
+
 set tabstop=2
 set expandtab
 set softtabstop=2
@@ -66,7 +68,7 @@ au FileType gitcommit set tw=72
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Place markers at 80 and 140 character columns
-set colorcolumn=80,140
+set colorcolumn=80,100,120
 " The following line blocks out all columns after the first value
 "let &colorcolumn=join(range(81,999),",")
 
@@ -86,7 +88,7 @@ Plugin 'jistr/vim-nerdtree-tabs'
 " highlights open files; close buffer from nerdtree
 "Plugin 'PhilRunninger/nerdtree-buffer-ops'
 " fuzzy file,buffer,mru,tag,... finder
-"Plugin 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 
 " keyword completion cache
 "Plugin 'Shougo/neocomplcache.vim'
@@ -158,6 +160,9 @@ Plugin 'vim-scripts/indentpython.vim'
 
 Plugin 'vim-scripts/YankRing.vim'
 
+Plugin 'fatih/vim-go'
+Plugin 'prabirshrestha/vim-lsp'
+
 call vundle#end()
 
 " ---- Styling -----------------------------------------------------------------
@@ -171,7 +176,7 @@ else
   "colorscheme railscasts
   " colorscheme zenburn
   set background=dark
-  colorscheme PaperColor
+  "colorscheme PaperColor
 endif
 
 "autocmd highlight LiteralTabs ctermbg=red guibg=red
