@@ -27,8 +27,8 @@ get_random_image() {
     echo "$1" | while read -r img; do
         rnd="$((RANDOM % 1000))"
         echo "$rnd:$img"
-    done \
-        sort -n | cut -d':' -f2- | head -n1
+        done \
+    |   sort -n | cut -d':' -f2- | head -n1
 
 }
 
