@@ -5,6 +5,10 @@
 # For the mac, it uses the relative 'batt.rb' ruby script
 # For Linux, it obtains the capacity from /sys/
 
+bat_pct() {
+  echo "$1" | grep -oP '(?<=, )\d+(?=%)'
+}
+
 case `uname -s` in
   Darwin)
     /usr/bin/pmset -g batt | ~/bin/batt.rb
@@ -16,8 +20,15 @@ case `uname -s` in
     case $vendor in
       Apple\ Inc*)
         # MacBook Pro (2015)
-        if command -v acpi; then
-          acpi -b | grep 'Battery 0' | grep -oP '(?<=, )\d+(?=%)'
+        if command -v acpi >/dev/null; then
+          bat0=$(acpi -b 2>&1 | grep 'Battery 0')
+          # If bat0 output matches "unknown", try bat1
+          # Otherwise, just use BAT0
+          if [[ $bat0 =~ "unavailable" ]]; then
+            bat_pct "$(acpi -b 2>&1 | grep 'Battery 1')"
+          else
+            bat_pct "$bat0"
+          fi
         else
           cat /sys/class/power_supply/BAT0/capacity
         fi
