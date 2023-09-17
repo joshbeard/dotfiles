@@ -7,17 +7,17 @@ specific to my Linux desktop and depend on:
   used to query monitors).
 * [swww](https://github.com/Horus645/swww) for setting wallpapers on Wayland.
 * [gosimac](https://github.com/1995parham/gosimac) for downloading wallpapers
-  from Bing and Usplash (via cron with [`bin/get.sh`](bin/get.sh)).
+  from Bing and Usplash (via cron with [`bin/wall-get.sh`](bin/wall-get.sh)).
 
 ## Description
 
-* [`bin/get.sh`](bin/get.sh) retrieves wallpapers using `gosimac` from Bing and
+* [`bin/wall-get.sh`](bin/wall-get.sh) retrieves wallpapers using `gosimac` from Bing and
   Usplash. I set this on a crontab schedule.
-* [`bin/swww-randomize.sh`](bin/swww-randomize.sh) sets a random wallpaper on
+* [`bin/wall-randomize.sh`](bin/wall-randomize.sh) sets a random wallpaper on
   each monitor detected by Hyprland. I start this when starting Hyprland and it
   runs in a loop.
-* [`bin/blacklist.sh`](bin/blacklist.sh) is used for "blacklisting" a wallpaper.
+* [`bin/wall-blacklist.sh`](bin/wall-blacklist.sh) is used for "blacklisting" a wallpaper.
   Since I'm downloading them in bulk, there's often some photos that I don't
   like. This script is a quick way to prevent them from showing up again,
   deleting them, and changing the specified display's wallpaper.
-* Sourcing a common config from [`etc/walls.cfg`](etc/walls.cfg)
+* Sourcing a common config from [`etc/wallpaper.cfg`](etc/wallpaper.cfg)

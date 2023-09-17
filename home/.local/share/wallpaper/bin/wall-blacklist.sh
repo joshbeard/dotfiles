@@ -6,11 +6,11 @@
 # Blacklist file format: <md5sum>::<image path>
 # Example: 1234567890abcdef::/home/user/image.jpg
 
-source "$HOME/.local/share/wallpaper/etc/walls.cfg"
+source "$HOME/.local/share/wallpaper/etc/wallpaper.cfg"
 source "$HOME/.local/share/wallpaper/lib/common.sh"
 
 usage() {
-  echo "blacklist.sh - Adds wallpaper images to the blacklist."
+  echo "wall-blacklist.sh - Adds wallpaper images to the blacklist."
   echo
   echo "Usage: $0 [<display>] [<file1> <file2> ...]"
   echo "  <digit>               Specify a single digit for display."
