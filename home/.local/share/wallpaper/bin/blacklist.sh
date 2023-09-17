@@ -7,6 +7,7 @@
 # Example: 1234567890abcdef::/home/user/image.jpg
 
 source "$HOME/.local/share/wallpaper/etc/walls.cfg"
+source "$HOME/.local/share/wallpaper/lib/common.sh"
 
 usage() {
   echo "blacklist.sh - Adds wallpaper images to the blacklist."
@@ -21,17 +22,14 @@ if [ "$#" -eq 0 ]; then
     usage
 fi
 
+check_required_command md5sum swww
+
 images="$@"
 
 # If a display is specified, get the wallpaper that's currently set on that
 # using 'swww query'.
 if [ "$#" -eq 1 ]; then
     if [[ "$1" =~ ^[0-9]+$ ]]; then
-        if ! command -v swww &> /dev/null; then
-            echo "The 'swww' command is not installed."
-            exit
-        fi
-
         display="$1"
         if [ "$display" -eq 0 ]; then
             display=1

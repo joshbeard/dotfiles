@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 source "$HOME/.local/share/wallpaper/etc/walls.cfg"
+source "$HOME/.local/share/wallpaper/lib/common.sh"
+
+check_required_command md5sum gosimac
 
 gosimac bing
 gosimac unsplash

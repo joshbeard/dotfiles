@@ -6,6 +6,7 @@
 # up as the wallpaper at regular intervals
 
 source "$HOME/.local/share/wallpaper/etc/walls.cfg"
+source "$HOME/.local/share/wallpaper/lib/common.sh"
 
 export SWWW_TRANSITION_FPS=60
 export SWWW_TRANSITION_STEP=2
@@ -59,6 +60,8 @@ if [[ -z "$image_dir" ]]; then
   echo "Usage: $0 [--once] [--interval <seconds>] [-d, --display <digit>] <dir containing images>"
   exit 1
 fi
+
+check_required_command swww hyprctl
 
 get_display_name() {
   segment=$(echo "$1" | grep -o "Monitor \([^ ]*\)" | awk '{print $2}')
