@@ -25,7 +25,7 @@ case $vendor in
     ON_BATTERY=1
 esac
 
-if [ "$ON_BATTERY" == "0" && "$SKIP_ON_BATTERY" == "true" ]; then
+if [ "$ON_BATTERY" == "0" ] && [ "$SKIP_ON_BATTERY" == "true" ]; then
   logger -t backup_josh -s "On battery power, skipping backup"
   exit 0
 fi
