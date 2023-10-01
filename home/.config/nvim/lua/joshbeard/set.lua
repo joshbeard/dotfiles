@@ -17,7 +17,7 @@ vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
@@ -34,8 +34,13 @@ vim.opt.colorcolumn = "80,100,120"
 vim.opt.statusline = "%f %m %r %y %w %="
 vim.opt.statusline = vim.opt.statusline + "%{&ff} %h %l/%L %c %V %P"
 
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevelstart = 99
 
 -- Options for vgit
 -- vim.opt.incsearch = false
 -- vim.wo.signcolumn = 'yes'
 -- vim.o.updatetime = 300
+--
+
