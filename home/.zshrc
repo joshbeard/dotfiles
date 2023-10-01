@@ -34,6 +34,8 @@ fi
 [ -f $HOME/.env ] && source $HOME/.env
 [ -f $HOME/.env.private ] && source $HOME/.env.private
 
+eval "$(fasd --init auto)"
+
 # Deal with "dumb" terminals and ttys
 #if [[ "$XDG_SESSION_TYPE" == 'tty' ]]; then
 #  prompt josh
