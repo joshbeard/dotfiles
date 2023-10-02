@@ -50,6 +50,8 @@ exec gsettings set org.gnome.desktop.wm.preferences theme Kripton
 # Notifications
 exec dunst
 
+exec srandrd $HOME/.local/bin/monitor-event.sh
+
 # -----------------------------------------------------------------------------
 # Keybindings
 # -----------------------------------------------------------------------------
@@ -138,6 +140,14 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# Move workspace to next monitor
+bindsym $mod+Shift+period move workspace to output right
+# Move workspace to previous monitor
+bindsym $mod+Shift+comma move workspace to output left
+
+# Switch to firefox workspace
+bindsym $mod+Shift+f workspace number $ws2
 
 # -----------------------------------------------------------------------------
 # Keybindings - session
