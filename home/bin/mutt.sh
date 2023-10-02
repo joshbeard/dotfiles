@@ -1,31 +1,47 @@
 #!/bin/sh
 # Helper for opening mutt in a terminal or raising the window if it's already
 # running.
-# One use case is launching mutt via the xfce4 mail checker panel item.
-#
-# Dependencies: xfce4-terminal, wmctrl
 
 WINDOW_NAME="mutt"
-TERMINAL=xfce4-terminal
+TERMINAL=kitty
+COMMAND="kitty --name ${WINDOW_NAME} -T ${WINDOW_NAME} mutt"
 
-mutt_init() {
-  winid=$(wmctrl -l -x | grep "${TERMINAL}" | grep "${WINDOW_NAME}" | cut -d' ' -f1)
-
-  if [ "x${winid}" != "x" ]; then
-    wmctrl -i -R "${winid}"
-  else
-    xfce4-terminal -T "${WINDOW_NAME}" --geometry 135x40 -x ${HOME}/bin/mutt.sh run
-  fi
+mutt_is_running() {
+    if [ "$XDG_SESSION_TYPE" == "x11" ]; then
+        winid=$(wmctrl -l -x | grep "${TERMINAL}" | grep "${WINDOW_NAME}" | cut -d' ' -f1)
+        if [ "x${winid}" == "x" ]; then
+            return 1
+        else
+            return 0
+        fi
+    elif [ -n "${HYPRLAND_INSTANCE_SIGNATURE}" ]; then
+        existing_window=$(hyprctl clients -j | jq -r ".[] | select(.initialTitle == \"${WINDOW_NAME}\" and .initialClass == \"${TERMINAL}\")")
+        if [ "x${existing_window}" == "x" ]; then
+            return 1
+        else
+            return 0
+        fi
+    fi
 }
 
-mutt_run() {
-  set -a
-  source ~/.env
-  mutt
+mutt_focus() {
+    if [ "$XDG_SESSION_TYPE" == "x11" ]; then
+        winid=$(wmctrl -l -x | grep "${TERMINAL}" | grep "${WINDOW_NAME}" | cut -d' ' -f1)
+        #Raise the window in X11:
+        wmctrl -i -R "${winid}"
+    elif [ -n "${HYPRLAND_INSTANCE_SIGNATURE}" ]; then
+        existing_window=$(hyprctl clients -j | jq -r ".[] | select(.initialTitle == \"${WINDOW_NAME}\" and .initialClass == \"${TERMINAL}\")")
+        window_id=$(echo "${existing_window}" | jq -r ".address")
+        hyprctl dispatch focuswindow "address:${window_id}"
+    fi
 }
 
-if [ "$1" == "run" ]; then
-  mutt_run
+if mutt_is_running; then
+    echo "mutt is running" > $HOME/mutt.log
+    mutt_focus
 else
-  mutt_init
+    echo "mutt is not running" > $HOME/mutt.log
+    set -a
+    source ~/.env
+    eval "${COMMAND}"
 fi
