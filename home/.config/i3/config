@@ -37,20 +37,23 @@ bar {
   }
 }
 
+gaps inner 5
+gaps outer 5
+
 #bindsym $mod+d exec "dmenu_run -nf '#F8F8F2' -nb '#282A36' -sb '#6272A4' -sf '#F8F8F2' -fn 'monospace-10' -p 'dmenu%'"
 
 # -----------------------------------------------------------------------------
 # Startup
 # -----------------------------------------------------------------------------
-# GTK theme
-exec gsettings set org.gnome.desktop.interface cursor-theme Qogir-cursors
-exec gsettings set org.gnome.desktop.interface gtk-theme Kripton
-exec gsettings set org.gnome.desktop.wm.preferences theme Kripton
+exec --no-startup-id picom
+exec --no-startup-id /usr/lib/xdg-desktop-portal-gtk
+exec --no-startup-id /usr/lib/gsd-xsettings
+exec --no-startup-id $HOME/.local/bin/monitor-event.sh
 
 # Notifications
-exec dunst
+exec --no-startup-id dunst
 
-exec srandrd $HOME/.local/bin/monitor-event.sh
+exec --no-startup-id srandrd $HOME/.local/bin/monitor-event.sh
 
 # -----------------------------------------------------------------------------
 # Keybindings
@@ -68,6 +71,8 @@ bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
+
+bindsym $mod+Tab exec --no-startup-id rofi -show window -theme /usr/share/rofi/themes/dracula2.rasi
 
 # move focused window
 bindsym $mod+Shift+h move left
@@ -210,3 +215,7 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
 
+for_window [class="gnome-calendar"] floating enable
+for_window [class="gnome-calculator"] floating enable
+
+for_window [class="Spotify"] move container to workspace $ws10
