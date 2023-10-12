@@ -28,7 +28,7 @@ mutt_focus() {
     if [ "$XDG_SESSION_TYPE" == "x11" ]; then
         winid=$(wmctrl -l -x | grep "${TERMINAL}" | grep "${WINDOW_NAME}" | cut -d' ' -f1)
         #Raise the window in X11:
-        wmctrl -i -R "${winid}"
+        wmctrl -i -a "${winid}"
     elif [ -n "${HYPRLAND_INSTANCE_SIGNATURE}" ]; then
         existing_window=$(hyprctl clients -j | jq -r ".[] | select(.initialTitle == \"${WINDOW_NAME}\" and .initialClass == \"${TERMINAL}\")")
         window_id=$(echo "${existing_window}" | jq -r ".address")
@@ -44,4 +44,5 @@ else
     set -a
     source ~/.env
     eval "${COMMAND}"
+    mutt_focus
 fi
