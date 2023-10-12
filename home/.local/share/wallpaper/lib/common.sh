@@ -9,3 +9,19 @@ check_required_command() {
         fi
     done
 }
+
+log_debug() {
+    logger -t "wallpaper" -p "user.debug" "$@"
+}
+
+log_info() {
+    logger -t "wallpaper" -p "user.info" "$@"
+}
+
+log_error() {
+    logger -t "wallpaper" -p "user.error" "$@"
+}
+
+log_warn() {
+    logger -t "wallpaper" -p "user.warn" "$@"
+}

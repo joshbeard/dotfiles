@@ -35,10 +35,22 @@ if [ "$#" -eq 1 ]; then
             display=1
         fi
 
-        query=$(swww query | head -n "$display" | tail -n 1)
-        image=$(echo "$query" | awk -F 'image: ' '{print $2}')
-
-        echo "Display $display: $image"
+        if [ "$XDG_SESSION_TYPE" == "x11" ]; then
+            if [ -f "$currently_set_file" ]; then
+                for line in $(cat "$currently_set_file"); do
+                    if [[ "$line" =~ ^$display: ]]; then
+                        image=$(echo "$line" | awk -F ':' '{print $2}')
+                    fi
+                done
+            else
+                log_error "No wallpaper set on display $display"
+                log_error "$currently_set_file does not exist"
+                exit
+            fi
+        else
+            query=$(swww query | head -n "$display" | tail -n 1)
+            image=$(echo "$query" | awk -F 'image: ' '{print $2}')
+        fi
 
         if [ -z "$image" ]; then
             echo "No wallpaper set on display $display"
@@ -61,6 +73,8 @@ for image in $images; do
         echo "File not found: $image"
         continue
     fi
+
+    echo "Adding $image to blacklist"
 
     md5sum=$(md5sum "$image" | cut -d ' ' -f 1)
     echo "$md5sum::$image" >> "$blacklist_file"
