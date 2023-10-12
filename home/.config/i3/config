@@ -11,7 +11,8 @@ default_border pixel
 #smart_borders on
 
 # class                 border  bground text    indicator child_border
-client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+#client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused          #722066 #722066 #F8F8F2 #722066   #722066
 client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
 client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
 client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
@@ -24,6 +25,7 @@ bar {
   tray_output primary
   status_command exec $HOME/.config/i3status/mybar.sh
   font pango:Hack Nerd Font Mono 10
+  strip_workspace_numbers yes
   colors {
     background #282A36
     statusline #F8F8F2
@@ -90,9 +92,9 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+Ctrl+s layout stacking
+bindsym $mod+Ctrl+w layout tabbed
+bindsym $mod+Ctrl+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -121,6 +123,8 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+set $mail "11:mail"
+set $music "12:music"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -133,6 +137,8 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
+bindsym $mod+m workspace number $mail
+bindsym $mod+s workspace number $music
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -145,6 +151,8 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+Shift+m move container to workspace number $mail
+bindsym $mod+Shift+s move container to workspace number $music
 
 # Move workspace to next monitor
 bindsym $mod+Shift+period move workspace to output right
@@ -215,7 +223,10 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
 
+assign [title="mutt"] 11
+
 for_window [class="gnome-calendar"] floating enable
 for_window [class="gnome-calculator"] floating enable
 
-for_window [class="Spotify"] move container to workspace $ws10
+for_window [class="Spotify"] move container to workspace $music
+for_window [title="mutt"] move container to workspace $mail
