@@ -1,21 +1,55 @@
 # Josh's Wallpaper Scripts
 
-This contains scripts for managing desktop wallpapers. They're currently
-specific to my Linux desktop and depend on:
+Scripts for managing desktop wallpapers.
+
+They're currently specific to my Linux desktop and depend on:
 
 * [gosimac](https://github.com/1995parham/gosimac) for downloading wallpapers
   from Bing and Usplash (via cron with [`bin/wall-get.sh`](bin/wall-get.sh)).
 * on xorg: xrandr and nitrogen
 * on wayland: hyprland and [swww](https://github.com/Horus645/swww)
 
-## Description
+## Features
 
-* [`bin/wall-get.sh`](bin/wall-get.sh) retrieves wallpapers using `gosimac` from Bing and
-  Usplash. I set this on a crontab schedule.
-* [`bin/wall-randomize.sh`](bin/wall-randomize.sh) sets a random wallpaper on
-  each detected monitor.
-* [`bin/wall-blacklist.sh`](bin/wall-blacklist.sh) is used for "blacklisting" a wallpaper.
-  Since I'm downloading them in bulk, there's often some photos that I don't
-  like. This script is a quick way to prevent them from showing up again,
-  deleting them, and changing the specified display's wallpaper.
-* Sourcing a common config from [`etc/wallpaper.cfg`](etc/wallpaper.cfg)
+* Download wallpapers from Bing and Unsplash
+* Randomly set a wallpaper per display
+* Set wallpapers on demand
+* Add wallpapers to a list and set from a list
+* Track recent wallpapers and avoid setting them for a while
+* Blacklist wallpapers
+* Supports Xorg and Wayland
+
+## Usage
+
+### Setting Wallpaper
+
+Randomize wallpapers across all detected displays:
+
+```shell
+walls.sh set
+```
+Set a random wallpaper on all displays and exit:
+
+```shell
+walls.sh set --once
+```
+
+Set a wallpaper on display 2 and exit:
+
+```shell
+walls.sh set -d 2 --once
+```
+
+### Using Lists
+
+Save the current wallpaper on display 1 to a list called "nature":
+
+```shell
+walls.sh add 1 nature
+```
+
+Set a wallpaper from a list:
+
+```shell
+walls.sh set -d 2 --once --list nature
+```
