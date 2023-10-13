@@ -36,11 +36,9 @@ list_name="$last_arg"
 # using 'swww query'.
 if [[ "$1" =~ ^[0-9]+$ ]]; then
     display="$1"
-    if [ "$display" -eq 0 ]; then
-        display=1
-    fi
-
     wallpaper=$(get_current_wallpaper "$display")
+
+    log_debug "Wallpaper on display $display: $wallpaper"
 
     if [ -z "$wallpaper" ]; then
         echo "No wallpaper set on display $display"

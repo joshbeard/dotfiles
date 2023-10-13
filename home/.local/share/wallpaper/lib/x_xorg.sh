@@ -9,6 +9,10 @@ check_required_command nitrogen xrandr
 set_wallpaper() {
     display="$1"
     img="$2"
+    if [ -z "$display" ]; then
+        log_error "No display specified"
+        exit
+    fi
     nitrogen --head=$display --set-zoom-fill  "$img" || return 1
 }
 

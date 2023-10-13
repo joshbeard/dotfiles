@@ -19,6 +19,7 @@ usage() {
     echo "  blacklist - Blacklist the current wallpaper."
     echo "  download  - Download wallpapers."
     echo "  add       - Add a wallpaper to a list."
+    echo "  view      - View the wallpaper set."
     echo
     exit 1
 }
@@ -46,6 +47,23 @@ case $cmd in
     add)
         shift
         $libdir/add.sh $@
+        ;;
+    view)
+        # Check if a second argument is provided (display)
+        if [ -z "$2" ]; then
+            echo "specify a display"
+            exit 1
+        fi
+
+        display="$2"
+        echo grep "^$display:" "$currently_set_file" | awk -F ':' '{print $2}'
+        current=$(grep "^$display:" "$currently_set_file" | awk -F ':' '{print $2}')
+        if [ -z "$current" ]; then
+            echo "No wallpaper set on display $display"
+            exit 1
+        fi
+        echo "Current wallpaper: $current"
+        feh "$current"
         ;;
     *)
         usage
