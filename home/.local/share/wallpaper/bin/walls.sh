@@ -29,15 +29,15 @@ case $cmd in
         ;;
     set)
         shift
-        $libdir/set.sh --once $@ "${wallpaper_dir}"
+        $libdir/set.sh --once $@
         ;;
     start)
         shift
-        $libdir/set.sh $@ "${wallpaper_dir}"
+        $libdir/set.sh $@
         ;;
     blacklist)
         shift
-        $libdir/blacklist.sh $@
+        $libdir/add.sh $@ blacklist
         ;;
     download)
         shift

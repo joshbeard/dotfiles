@@ -47,7 +47,7 @@ if [[ "$1" =~ ^[0-9]+$ ]]; then
         exit
     fi
 
-    post_run_cmd="${post_run_cmd} --display $display"
+    blacklist_post_run_cmd="${blacklist_post_run_cmd} -d $display"
 
     images="$wallpaper"
 fi
@@ -69,7 +69,21 @@ for image in $images; do
         mkdir -p "$lists_dir"
     fi
 
+    if [ "$list_name" == "blacklist" ]; then
+        echo "Adding $image to blacklist"
+        echo "$(md5sum $image | awk '{print $1}')::$image" >> "$blacklist_file"
+        rm -f "$image"
+        continue
+    fi
+
     echo "Adding $image to list ${lists_dir}/${list_name}.txt"
 
     echo "$image" >> "${lists_dir}/${list_name}.txt"
 done
+
+if [ "$list_name" == "blacklist" ]; then
+    if [ -n "$blacklist_post_run_cmd" ]; then
+        log_debug "Running blacklist_post_run_cmd: $blacklist_post_run_cmd"
+        eval "$blacklist_post_run_cmd"
+    fi
+fi

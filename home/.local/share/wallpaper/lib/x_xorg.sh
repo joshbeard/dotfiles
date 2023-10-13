@@ -7,6 +7,8 @@ check_required_command nitrogen xrandr
 #   display: The display to set the wallpaper for
 #   img: The image to set as wallpaper
 set_wallpaper() {
+    display="$1"
+    img="$2"
     nitrogen --head=$display --set-zoom-fill  "$img" || return 1
 }
 
