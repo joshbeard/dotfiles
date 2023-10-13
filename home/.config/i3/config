@@ -202,14 +202,14 @@ bindsym XF86AudioMute exec $HOME/.local/bin/set-volume.sh --mute && $refresh_i3s
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && notify-send -t 1000 "Mic: $(pactl list sources | grep '^[[:space:]]Volume:' | head -n $(( $SOURCE + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,')%"
 
 # Playerctl
-bindsym XF86AudioPlay exec playerctl play-pause && notify-send -t 1000 "Playing: $(playerctl metadata title)"
-bindsym XF86AudioNext exec playerctl next && notify-send -t 1000 "Playing: $(playerctl metadata title)"
-bindsym XF86AudioPrev exec playerctl previous && notify-send -t 1000 "Playing: $(playerctl metadata title)"
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 # SUPER+pgup
-bindsym $mod+117 exec playerctl next
+bindcode $mod+112 exec playerctl previous
 # SUPER+pgdn
-bindsym $mod+112 exec playerctl previous
+bindcode $mod+117 exec playerctl next
 
 # Brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
