@@ -1,48 +1,99 @@
 #!/bin/bash
+# joshbeard's monitor layout script for X11/Xorg
+# 
 # Script to automatically change monitor layout based on connected monitors.
 # This script is called by the 'srandrd' daemon and uses 'xrandr' to change
 # the layout.
-DISPLAY=:0.0
-PRIMARY=eDP-1
+#
+# This is for X11/Xorg only. It will not work with Wayland. In Wayland, the
+# compositor is responsible for managing the monitor layout.
+#
+# I use this with laptops that move between different workstations with
+# different monitor setups. The script will automatically detect the
+# connected monitors and apply the appropriate layout.
+#
+# The monitor configuration is uniquely identified based on the EDIDs of the
+# connected monitors. The hashed EDIDs are mapped to a friendly name and a
+# corresponding layout script (e.g. saved by 'arandr') to apply the layout.
+#
+# Perhaps there's something out there that already does this in a fairly
+# agnostic sort of way?
 
 # Define corresponding layout scripts as an associative array
 declare -A LAYOUTS=(
-  ["eDP-1"]="${HOME}/.screenlayout/laptop-only.sh"
-  ["eDP-1 HDMI-1"]="${HOME}/.screenlayout/workbench-2.sh"
-  ["eDP-1 HDMI-1 HDMI-2"]="${HOME}/.screenlayout/workbench-3.sh"
-  ["eDP-1 HDMI-2 HDMI-1"]="${HOME}/.screenlayout/workbench-3-alt.sh"
+  ["223632c428784fecaaa3e2a6aaaf6d8e"]="No monitors:${HOME}/.screenlayout/laptop-only.sh"
+  ["5564e8f6c8dacb3fca826f532ff7ef73"]="Workbench Single:${HOME}/.screenlayout/workbench-single.sh"
+  ["01f4f05ff5dd5f5311b1d55e60330048"]="Workbench Dual:${HOME}/.screenlayout/workbench-dual.sh"
 )
 
-# Get the list of active monitors
-active_monitors=$(xrandr | grep " connected" | awk '{print $1}')
-active_monitors=$(echo ${active_monitors})
+# Primary monitor when using auto-layout for unknown configurations.
+declare PRIMARY=eDP-1
 
-echo "Active monitors: |${active_monitors}|"
-notify-send "Active monitors: ${active_monitors}"
+# Helper function to extract the unique identifier (serial number or part of
+# EDID) of a monitor
+get_monitor_id() {
+  local monitor_name="$1"
+  local edid_full
+  local edid_hash
+  # Get the full EDID block
+  edid_full=$(xrandr --verbose | awk "/^${monitor_name} connected/,/EDID/" | grep -v "EDID" | grep -o "[0-9a-fA-F]{32}")
+  # Hash the EDID to get a consistent unique identifier
+  edid_hash=$(echo "${edid_full}" | md5sum | awk '{print $1}')
+  echo "${edid_hash}"
+}
 
-# Check if the active configuration matches any defined configuration
-for config in "${!LAYOUTS[@]}"; do
-  if [[ "${active_monitors}" == "${config}" ]]; then
-    layout="${LAYOUTS[${config}]}"
-    if [[ -n "${layout}" && -f "${layout}" ]]; then
-      echo "Executing ${layout}"
-      "${layout}"
-    else
-      echo "No script found for this configuration: ${config}"
+generate_config_id() {
+  local config_id=""
+  local connected_monitors
+  connected_monitors=$(xrandr | grep " connected" | awk '{print $1}')
+  for monitor in ${connected_monitors}; do
+    config_id+=$(get_monitor_id $monitor)
+  done
+  echo "${config_id}" | md5sum | awk '{print $1}'
+}
+
+map_config_to_script() {
+  local config_id="$1"
+  while IFS='=' read -r hashed_edid friendly_name script_name; do
+    if [[ "${config_id}" == *"${hashed_edid}"* ]]; then
+      echo "${friendly_name}" "${script_name}"
+      return
     fi
-    exit
+  done < "${CONFIG_FILE}"
+}
+
+# Main execution
+config_id=$(generate_config_id)
+layout_script=""
+friendly_name=""
+
+# Look for a script matching the configuration ID
+for hash in "${!LAYOUTS[@]}"; do
+  if [[ "${config_id}" == *"${hash}"* ]]; then
+    IFS=':' read -r friendly_name layout_script <<< "${LAYOUTS[${hash}]}"
+    break
   fi
 done
 
-# If no matching configuration is found, enable auto layout
-echo "No script for this configuration"
+if [[ -n "${layout_script}" && -f "${layout_script}" ]]; then
+  echo "Executing layout for ${friendly_name} using script ${layout_script}"
+  notify-send "Monitor layout changed to ${friendly_name}"
+  bash "${layout_script}"
+  exit $?
+fi
 
 PREVIOUS=$PRIMARY
 for monitor in ${active_monitors}; do
   if [[ "${monitor}" != "${PRIMARY}" ]]; then
     echo "Executing xrandr --output ${monitor} --auto --right-of ${PREVIOUS}"
-    xrandr --output "${monitor}" --auto --right-of "${PREVIOUS}"
+    echo xrandr --output "${monitor}" --auto --right-of "${PREVIOUS}"
     PREVIOUS=$monitor
   fi
 done
 
+echo "No layout script found for the current monitor configuration."
+echo "Current configuration ID: ${config_id}"
+echo "Add the following entry to the LAYOUTS array in the script:"
+echo "[\"${config_id}\"]=\"ThisConfigName:path/to/your/layout_script.sh\""
+
+notify-send "Monitor layout not found for config ${config_id}"
