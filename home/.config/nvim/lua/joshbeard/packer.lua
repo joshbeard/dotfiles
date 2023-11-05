@@ -35,8 +35,16 @@ return require('packer').startup(function(use)
     use({
         'rose-pine/neovim',
         as = 'rose-pine',
+    --     config = function()
+    --         vim.cmd('colorscheme rose-pine')
+    --     end
+    })
+
+    use ({
+        "catppuccin/nvim",
+        as = "catppuccin",
         config = function()
-            vim.cmd('colorscheme rose-pine')
+            vim.cmd('colorscheme catppuccin-mocha')
         end
     })
 
