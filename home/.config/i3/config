@@ -4,16 +4,15 @@
 
 set $mod Mod4
 
-font pango:Hack Nerd Font Mono 10
+font pango:Hack Nerd Font 10
 
 default_border pixel
 #hide_edge_borders vertical
 #smart_borders on
 
 # class                 border  bground text    indicator child_border
-#client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
-client.focused          #722066 #722066 #F8F8F2 #722066   #722066
-client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.focused          #754099 #754099 #F8F8F2 #754099   #754099
+client.focused_inactive #74475A #74475A #F8F8F2 #44475A   #44475A
 client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
 client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
 client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
@@ -40,7 +39,7 @@ bar {
 }
 
 gaps inner 5
-gaps outer 5
+gaps outer 8
 
 #bindsym $mod+d exec "dmenu_run -nf '#F8F8F2' -nb '#282A36' -sb '#6272A4' -sf '#F8F8F2' -fn 'monospace-10' -p 'dmenu%'"
 
@@ -56,6 +55,8 @@ exec --no-startup-id $HOME/.local/bin/monitor-event.sh
 exec --no-startup-id dunst
 
 exec --no-startup-id srandrd $HOME/.local/bin/monitor-event.sh
+
+exec --no-startup-id sleep 5 && $HOME/.local/share/wallpaper/bin/walls.sh set
 
 # -----------------------------------------------------------------------------
 # Keybindings
@@ -83,7 +84,7 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # split in horizontal orientation
-bindsym $mod+% split h
+#bindsym $mod+% split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -162,6 +163,11 @@ bindsym $mod+Shift+comma move workspace to output left
 # Switch to firefox workspace
 bindsym $mod+Shift+f workspace number $ws2
 
+# FIXME: screenshots
+#bindsym $mod+Shift+4 --release exec "/usr/bin/scrot -s -f \~/Pictures/screenshots/
+#bindsym $mod+Shift+Ctrl+4 exec scrot -s -f -o "/tmp/image.png" && xclip -selection clipboard -t image/png -i /tmp/image.png
+#bindsym $mod+Shift+4 exec "i3-nagbar -f 'pango:Hack Nerd Font Mono 14' -t warning -m 'Do you really want to exit i3?' -B 'Yes, exit i3' 'i3-msg exit'"
+
 # -----------------------------------------------------------------------------
 # Keybindings - session
 # -----------------------------------------------------------------------------
@@ -170,7 +176,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -f 'pango:Hack Nerd Font Mono 14' -t warning -m 'Do you really want to exit i3?' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # -----------------------------------------------------------------------------
 # Keybindings - resize
@@ -221,12 +227,13 @@ floating_modifier $mod
 
 # move tiling windows via drag & drop by left-clicking into the title bar,
 # or left-clicking anywhere into the window while holding the floating modifier.
-tiling_drag modifier titlebar
+#tiling_drag modifier titlebar
 
 assign [title="mutt"] 11
 
 for_window [class="gnome-calendar"] floating enable
 for_window [class="gnome-calculator"] floating enable
+for_window [title="wallview"] floating enable
 
 for_window [class="Spotify"] move container to workspace $music
 for_window [title="mutt"] move container to workspace $mail
