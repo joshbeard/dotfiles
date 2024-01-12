@@ -1,0 +1,29 @@
+import = [
+  "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 11.0
+
+[font.normal]
+family = "Hack Nerd Font"
+style = "Regular"
+
+[scrolling]
+history = 100000
+
+[window]
+dynamic_title = true
+opacity = 0.9
+title = "Terminal"
+
+[window.dimensions]
+columns = 120
+lines = 40
+
+[window.padding]
+x = 3
+y = 3
