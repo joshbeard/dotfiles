@@ -43,6 +43,10 @@ if which pacman 2>&1 > /dev/null; then
   pacman -Q >| "${HOME}/.backups/pacman-list.txt"
 fi
 
+#eval $(ssh-agent -s)
+
+ssh josh@nfs.home.jbeard.dev uptime
+
 # Run sysbackup with config
 ${SYSBACKUP} --config ${CONFIG}
 
