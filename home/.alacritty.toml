@@ -4,6 +4,7 @@ import = [
 
 [env]
 TERM = "xterm-256color"
+TERMINAL = "alacritty"
 
 [font]
 size = 11.0
