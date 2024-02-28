@@ -53,3 +53,6 @@ vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.config/nvim/lua/joshbeard/packer.l
 -- vim.keymap.set("n", "<leader><leader>", function()
 --     vim.cmd("so")
 -- end)
+vim.keymap.set("n", '<leader>dk', function() require('dap').continue() end)
+vim.keymap.set("n", '<leader>dl', function() require('dap').run_last() end)
+vim.keymap.set("n", '<leader>b', function() require('dap').toggle_breakpoint() end)

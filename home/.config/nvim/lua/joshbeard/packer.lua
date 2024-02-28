@@ -109,6 +109,11 @@ return require('packer').startup(function(use)
     }
 
     use 'ray-x/go.nvim'
+
+    use "mfussenegger/nvim-dap"
+    use "rcarriga/nvim-dap-ui"
+    use "theHamsta/nvim-dap-virtual-text"
+
     use 'ray-x/guihua.lua' -- recommended if need floating window support
     use 'terrortylor/nvim-comment'
     use 'lukas-reineke/indent-blankline.nvim'
