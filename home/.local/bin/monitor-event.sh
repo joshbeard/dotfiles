@@ -26,9 +26,11 @@
 # The hash is the MD5 hash of the EDID of the connected monitors. Run this
 # script manually to get the hash for the current configuration.
 declare -A LAYOUTS=(
-  ["223632c428784fecaaa3e2a6aaaf6d8e"]="No monitors:${HOME}/.screenlayout/laptop-only.sh"
-  ["5564e8f6c8dacb3fca826f532ff7ef73"]="Workbench Single:${HOME}/.screenlayout/workbench-single.sh"
-  ["01f4f05ff5dd5f5311b1d55e60330048"]="Workbench Dual:${HOME}/.screenlayout/workbench-dual.sh"
+  ["56520cd8968308b0c5eebeca995fcb4b"]="No monitors:${HOME}/.screenlayout/laptop-only.sh"
+  ["a78cdcc2b2a2b7bbb44b695abe7fd44d"]="Desk Single:${HOME}/.screenlayout/desk-single.sh"
+  ["23ea2dc0ea6c7130db769daca9f7eb2e"]="Desk Dual:${HOME}/.screenlayout/desk-dual.sh"
+  ["43fe6daae5cd5d4a6700f2f26d84034f"]="Workbench Single:${HOME}/.screenlayout/workbench-single.sh"
+  ["298cdf5ed6c1335803e7390c639b0c62"]="Workbench Dual:${HOME}/.screenlayout/workbench-dual.sh"
 )
 
 # Primary monitor when using auto-layout for unknown configurations.
@@ -47,7 +49,7 @@ get_monitor_id() {
   local edid_full
   local edid_hash
   # Get the full EDID block
-  edid_full=$(xrandr --verbose | awk "/^${monitor_name} connected/,/EDID/" | grep -v "EDID" | grep -o "[0-9a-fA-F]{32}")
+  edid_full=$(xrandr --prop | grep -A 15 " connected " | grep "EDID:" -A 8)
   # Hash the EDID to get a consistent unique identifier
   edid_hash=$(echo "${edid_full}" | md5sum | awk '{print $1}')
   echo "${edid_hash}"
@@ -63,6 +65,10 @@ generate_config_id() {
     config_id+=$(get_monitor_id $monitor)
   done
   echo "${config_id}" | md5sum | awk '{print $1}'
+}
+
+update_wallpaper() {
+  walls.sh set --once --no-track
 }
 
 # ----------------------------------------------------------------------------
@@ -90,6 +96,9 @@ if [ -n "${layout_script}" ]; then
   echo "Executing layout for ${friendly_name} using script ${layout_script}"
   notify-send -i "$NOTIFY_ICON" "Monitor layout changed to ${friendly_name}"
   bash "${layout_script}"
+
+  update_wallpaper
+
   exit $?
 fi
 
@@ -111,3 +120,4 @@ echo "Add the following entry to the LAYOUTS array in the script:"
 echo "[\"${config_id}\"]=\"ThisConfigName:path/to/your/layout_script.sh\""
 
 notify-send -i "$NOTIFY_ICON" "Monitor layout not found for config ${config_id}"
+sleep 4 && update_wallpaper
