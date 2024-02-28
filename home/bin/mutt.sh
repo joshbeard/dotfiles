@@ -3,8 +3,8 @@
 # running.
 
 WINDOW_NAME="mutt"
-TERMINAL=kitty
-COMMAND="kitty --name ${WINDOW_NAME} -T ${WINDOW_NAME} mutt"
+TERMINAL=alacritty
+COMMAND="alacritty --title ${WINDOW_NAME} --class ${WINDOW_NAME} -e neomutt"
 
 mutt_is_running() {
     if [ "$XDG_SESSION_TYPE" == "x11" ]; then
