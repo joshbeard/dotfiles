@@ -37,8 +37,10 @@ ds = diff --staged
 bv = branch -vv
 l1 = log --oneline --decorate
 # git reauthor $START..$END
-reauthor = !sh -c 'eval `git log --reverse --topo-order --pretty=format:\"git cherry-pick %H &&  git commit --amend -C %H --author=\\\"%aN <%aE>\\\" && \" $0 ` "echo success" '
+#reauthor = !sh -c 'eval `git log --reverse --topo-order --pretty=format:\"git cherry-pick %H &&  git commit --amend -C %H --author=\\\"%aN <%aE>\\\" && \" $0 ` "echo success" '
 mr = !sh -c 'git fetch $1 merge-requests/$2/head:mr-$1-$2 && git checkout mr-$1-$2' -
+bls = for-each-ref --sort=committerdate refs/heads/ --format='%(committerdate:short) %(refname:short)'
+blsr = for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short) %(refname:short)'
 
 [color]
 ui = auto
