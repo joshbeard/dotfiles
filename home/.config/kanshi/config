@@ -1,0 +1,17 @@
+# Laptop only
+profile {
+    output eDP-1 enable mode 1920x1200 position 0,0 scale 1
+}
+
+# Desk with single monitor
+profile {
+    output eDP-1 enable mode 1920x1200 position 0,0 scale 1
+    output HDMI-A-1 enable mode 1920x1080 position 0,-1080
+}
+
+# Workbench with dual monitors
+profile {
+    output eDP-1 enable mode 1920x1200 position 0,0 scale 1
+    output HDMI-A-2 enable mode 1920x1080 position 1920,0
+    output HDMI-A-1 enable mode 1920x1080 position 3840,0
+}
