@@ -1,17 +1,48 @@
 # Laptop only
-profile {
+profile "laptop" {
     output eDP-1 enable mode 1920x1200 position 0,0 scale 1
 }
 
 # Desk with single monitor
-profile {
+# +--------+
+# | 24"    |
+# +--------+
+# +--------+
+# + laptop +
+# +--------+
+profile "desk_single" {
     output eDP-1 enable mode 1920x1200 position 0,0 scale 1
-    output HDMI-A-1 enable mode 1920x1080 position 0,-1080
+    output "ViewSonic Corporation VX2370 SERIES TA9153340972" enable mode 1920x1080 position 0,-1080
+}
+
+# Desk with 2 monitors
+# +------------+ +--------+
+# | 34" Curved | |  24"   |
+# +------------+ +--------+
+#                +--------+
+#                | laptop |
+#                +--------+
+profile "desk_dual" {
+    output "eDP-1" enable mode 1920x1200 position 0,0
+    output "ViewSonic Corporation VX2370 SERIES TA9153340972" enable mode 1920x1080 position 0,-1080
+    output "HP Inc. HP 34f Curved 3CM0443C3Z" enable mode 3440x1440 position -3440,-1080
+}
+
+# Workbench with single monitor
+# +--------+ +--------+
+# + laptop + | 24"    |
+# +--------+ +--------+
+profile "workbench_single" {
+    output eDP-1 enable mode 1920x1200 position 0,0 scale 1
+    output "ViewSonic Corporation VA2456 Series VC42224C1052" enable mode 1920x1080 position 1920,0
 }
 
 # Workbench with dual monitors
-profile {
+# +--------+ +--------+ +--------+
+# + laptop + | 24"    | | 24"    |
+# +--------+ +--------+ +--------+
+profile "workbench_dual" {
     output eDP-1 enable mode 1920x1200 position 0,0 scale 1
-    output HDMI-A-2 enable mode 1920x1080 position 1920,0
-    output HDMI-A-1 enable mode 1920x1080 position 3840,0
+    output "ViewSonic Corporation VA2456 Series VC42224C1052" enable mode 1920x1080 position 1920,0
+    output "ViewSonic Corporation VA2456 Series VC42224C1053" enable mode 1920x1080 position 3840,0
 }
