@@ -3,8 +3,9 @@
 # running.
 
 WINDOW_NAME="mutt"
+WINDOW_CLASS="mutt"
 TERMINAL=alacritty
-COMMAND="alacritty --title ${WINDOW_NAME} --class ${WINDOW_NAME} -e neomutt"
+COMMAND="alacritty --title ${WINDOW_NAME} --class ${WINDOW_NAME} -e mutt"
 
 mutt_is_running() {
     if [ "$XDG_SESSION_TYPE" == "x11" ]; then
@@ -15,7 +16,7 @@ mutt_is_running() {
             return 0
         fi
     elif [ -n "${HYPRLAND_INSTANCE_SIGNATURE}" ]; then
-        existing_window=$(hyprctl clients -j | jq -r ".[] | select(.initialTitle == \"${WINDOW_NAME}\" and .initialClass == \"${TERMINAL}\")")
+        existing_window=$(hyprctl clients -j | jq -r ".[] | select(.initialTitle == \"${WINDOW_NAME}\" and .initialClass == \"${WINDOW_CLASS}\")")
         if [ "x${existing_window}" == "x" ]; then
             return 1
         else
@@ -30,17 +31,15 @@ mutt_focus() {
         #Raise the window in X11:
         wmctrl -i -a "${winid}"
     elif [ -n "${HYPRLAND_INSTANCE_SIGNATURE}" ]; then
-        existing_window=$(hyprctl clients -j | jq -r ".[] | select(.initialTitle == \"${WINDOW_NAME}\" and .initialClass == \"${TERMINAL}\")")
+        existing_window=$(hyprctl clients -j | jq -r ".[] | select(.initialTitle == \"${WINDOW_NAME}\" and .initialClass == \"${WINDOW_CLASS}\")")
         window_id=$(echo "${existing_window}" | jq -r ".address")
         hyprctl dispatch focuswindow "address:${window_id}"
     fi
 }
 
 if mutt_is_running; then
-    echo "mutt is running" > $HOME/mutt.log
     mutt_focus
 else
-    echo "mutt is not running" > $HOME/mutt.log
     set -a
     source ~/.env
     eval "${COMMAND}"
