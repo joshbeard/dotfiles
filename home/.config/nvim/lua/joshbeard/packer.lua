@@ -1,8 +1,6 @@
--- Neovim Packer Configuration for Plugins
--- https://github.com/wbthomason/packer.nvim
-
--- Bootstrap packer.nvim if not installed
--- https://github.com/wbthomason/packer.nvim#bootstrapping
+-- --------------------------------------------------------------
+-- Packer Plugin Configuration
+-- --------------------------------------------------------------
 local ensure_packer = function()
     local fn = vim.fn
     local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
@@ -24,22 +22,14 @@ return require('packer').startup(function(use)
         require('packer').sync()
     end
 
-    --  use 'rstacruz/vim-closer'
-
+    -- telescope (file pick, grep, etc)
     use {
         'nvim-telescope/telescope.nvim',
         -- tag = '0.1.0',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
-    use({
-        'rose-pine/neovim',
-        as = 'rose-pine',
-    --     config = function()
-    --         vim.cmd('colorscheme rose-pine')
-    --     end
-    })
-
+    -- color scheme
     use ({
         "catppuccin/nvim",
         as = "catppuccin",
@@ -48,6 +38,7 @@ return require('packer').startup(function(use)
         end
     })
 
+    -- parser and syntax highlighter
     use {
         'nvim-treesitter/nvim-treesitter',
         run = function()
@@ -56,12 +47,19 @@ return require('packer').startup(function(use)
         end
     }
 
-    use("nvim-treesitter/playground")
+    -- GitHub Copilot
     use("github/copilot.vim")
+
+    -- file switcher
     use("theprimeagen/harpoon")
+
+    -- undo tree
     use("mbbill/undotree")
+
+    -- surround
     use("tpope/vim-surround")
 
+    -- LSP
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',
@@ -85,6 +83,7 @@ return require('packer').startup(function(use)
         }
     }
 
+    -- git tools
     use("tpope/vim-fugitive")
     use {
         'tanvirtin/vgit.nvim',
@@ -93,6 +92,7 @@ return require('packer').startup(function(use)
         }
     }
 
+    -- file explorer
     use {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v2.x",
@@ -103,36 +103,37 @@ return require('packer').startup(function(use)
         }
     }
 
+    -- highlight TODO, FIXME, etc
     use {
         "folke/todo-comments.nvim",
         requires = { "nvim-lua/plenary.nvim" },
     }
 
+    -- go support
     use 'ray-x/go.nvim'
 
-    use "mfussenegger/nvim-dap"
-    use "rcarriga/nvim-dap-ui"
-    use "theHamsta/nvim-dap-virtual-text"
+    -- gui library
+    use 'ray-x/guihua.lua'
 
-    use 'ray-x/guihua.lua' -- recommended if need floating window support
+    -- toggle comments
     use 'terrortylor/nvim-comment'
-    use 'lukas-reineke/indent-blankline.nvim'
-    use 'rhysd/git-messenger.vim'
-    use 'norcalli/nvim-colorizer.lua'
-    use 'beauwilliams/statusline.lua'
-    use 'kosayoda/nvim-lightbulb'
 
+    -- indent guides
+    use 'lukas-reineke/indent-blankline.nvim'
+
+    -- statusline
+    use 'beauwilliams/statusline.lua'
+
+    -- terminal
     use { "akinsho/toggleterm.nvim", tag = '*', config = function()
         require("toggleterm").setup()
     end }
 
+    -- command palette
     use {
         'gelguy/wilder.nvim',
         config = function()
             -- config goes here
         end,
     }
-
-    -- TODO: fonts, configuration
-    -- use 'wfxr/minimap.vim'
 end)
