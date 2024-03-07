@@ -22,8 +22,11 @@ set use_from = yes
 #set smtp_url = `gnome-keyring-query get mail:smtp_url`
 
 # Retrieve from 1password
-#set smtp_pass = `op item get "Migadu Mail - josh@joshbeard.me" --fields type=concealed --format json | jq -r '.value'`
-#set smtp_url = `op item get "Migadu Mail - josh@joshbeard.me" --fields smtp_url`
+# NOTE: This will prompt for the 1password master password each time mutt is
+# opened. I launch mutt in a tmux session to persist the password in a session.
+# 1password must be running for this to work.
+set smtp_pass = `op item get "Migadu Mail - josh@joshbeard.me" --fields type=concealed --format json | jq -r '.value'`
+set smtp_url = `op item get "Migadu Mail - josh@joshbeard.me" --fields smtp_url`
 
 set ssl_force_tls = yes
 

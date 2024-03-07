@@ -1,11 +1,13 @@
 #!/bin/sh
 # Helper for opening mutt in a terminal or raising the window if it's already
-# running.
+# running. Mutt is launched in a tmux session.
 
-WINDOW_NAME="mutt"
-WINDOW_CLASS="mutt"
+MUTT_EXEC="neomutt"
 TERMINAL=alacritty
-COMMAND="alacritty --title ${WINDOW_NAME} --class ${WINDOW_NAME} -e mutt"
+
+WINDOW_NAME=$MUTT_EXEC
+WINDOW_CLASS=$MUTT_EXEC
+TERMINAL_CMD="${TERMINAL} --title ${WINDOW_NAME} --class ${WINDOW_NAME}"
 
 mutt_is_running() {
     if [ "$XDG_SESSION_TYPE" == "x11" ]; then
@@ -37,11 +39,19 @@ mutt_focus() {
     fi
 }
 
+tmux_attach() {
+    tmux has-session -t $MUTT_EXEC 2>/dev/null || tmux new-session -d -s $MUTT_EXEC "$MUTT_EXEC"; tmux attach -t $MUTT_EXEC
+}
+
+if [ "$1" = "attach" ]; then
+    tmux_attach
+    exit 0
+fi
+
 if mutt_is_running; then
     mutt_focus
 else
     set -a
     source ~/.env
-    eval "${COMMAND}"
-    mutt_focus
+    eval "${TERMINAL_CMD} -e $0 attach"
 fi
