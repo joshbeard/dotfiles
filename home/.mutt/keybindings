@@ -9,7 +9,7 @@ bind index,pager         d         noop
 bind index,pager         s         noop
 bind index,pager         c         noop
 bind generic,pager       t         noop
-bind index               q         noop # unbind q from quit on index
+bind index               q         noop # use ctrl-c to exit
 
 bind generic,index,pager \Cf       next-page
 bind generic,index,pager \Cb       previous-page
@@ -40,8 +40,8 @@ macro index,pager gf "<change-folder>?"                   "open mailbox..."
 # ----------------------------------------------------
 
 bind  index,pager    a   group-reply
-macro index,pager    dd  "<delete-message><sync-mailbox>"                                 "move message to trash"
-macro index,pager    dat "<delete-thread><sync-mailbox>"                                  "move thread to trash"
+macro index,pager    dd  "<delete-message><sync-mailbox>" "move message to trash"
+macro index,pager    dat "<delete-thread><sync-mailbox>"  "move thread to trash"
 #macro index,pager    <space>d "<delete-message>" "delete message"
 macro index,pager    ss  ":macro browser \\015 \"\<select-entry\>\<sync-mailbox\>:bind browser \\\\015 select-entry\\015:bind browser q exit\\015\"\015:macro browser q \"<exit>:bind browser \\\\015 select-entry\\015:bind browser q exit\\015\"\015<save-message>?"                                                                                                                                     "save message to a mailbox"
 macro index          sat ":macro browser \\015 \"\<select-entry\>\<sync-mailbox\>:bind browser \\\\015 select-entry\\015:bind browser q exit\\015\"\015:macro browser q \"<exit>:bind browser \\\\015 select-entry\\015:bind browser q exit\\015'q<untag-pattern>.\\015\"\015<mark-message>q<enter><untag-pattern>.<enter><tag-thread><tag-prefix-cond><save-message>?"                                    "save thread to a mailbox"
@@ -85,6 +85,3 @@ macro index,pager S '<save-message>=Junk<enter>'
 
 # Jump to inbox
 macro index,pager I '<change-folder>=INBOX<enter>'
-
-
-
