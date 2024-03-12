@@ -14,7 +14,7 @@ table.insert(vimgrep_arguments, "!**/.git/*")
 -- Don't preview binaries
 local previewers = require("telescope.previewers")
 local Job = require("plenary.job")
-local new_maker = function(filepath, bufnr, opts)
+local exclude_binaries = function(filepath, bufnr, opts)
   filepath = vim.fn.expand(filepath)
   Job:new({
     command = "file",
@@ -40,12 +40,22 @@ telescope.setup({
     preview = {
         filesize_limit = 0.1, -- MB
     },
-    buffer_previewer_maker = new_maker,
+    buffer_previewer_maker = exclude_binaries,
 	},
 	pickers = {
 		find_files = {
-			-- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
-			find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+			find_command = {
+        "rg", "--files", "--hidden",
+        "--glob", "!**/.git/*",
+        "--glob", "!**/node_modules/*",
+        "--glob", "!**/.terraform/*",
+        "--glob", "!**/vendor/*",
+        "--glob", "!**/__pycache__/*",
+        "--glob", "!**/.venv/*",
+        "--glob", "!**/.cache/*",
+        "--glob", "!**/go.sum",
+        "--glob", "!**/go/pkg/*",
+      },
 		},
 	},
 })
