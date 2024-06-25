@@ -2,6 +2,20 @@
 # Adapted from ThePrimeagen's dotfiles
 # https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer
 
+if [[ -z "$TERMINAL" ]]; then
+  case $(uname) in
+    Darwin)
+      export TERMINAL=kitty
+      ;;
+    Linux)
+      export TERMINAL=alacritty
+      ;;
+    *)
+      export TERMINAL=alacritty
+      ;;
+  esac
+fi
+
 is_rofi=false
 if [[ "$1" == "rofi" ]]; then
   is_rofi=true
@@ -42,7 +56,10 @@ open() {
     return
   fi
 
-  alacritty -e "$@"
+  #alacritty -e "$@"
+  #kitty -e "$@"
+
+  $TERMINAL -e "$@"
 }
 
 # Main logic
