@@ -103,6 +103,9 @@ return require('packer').startup(function(use)
         }
     }
 
+    -- transparent background
+    use 'xiyaowong/nvim-transparent'
+
     -- highlight TODO, FIXME, etc
     use {
         "folke/todo-comments.nvim",

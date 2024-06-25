@@ -1,3 +1,6 @@
+-- highlight NeoTreeNormal guibg=#1e222a guifg=#abb2bf
+-- highlight NeoTreeNormalNC guibg=none guifg=#5c6370
+
 require("neo-tree").setup({
     close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
     popup_border_style = "rounded",

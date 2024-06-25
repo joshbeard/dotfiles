@@ -23,7 +23,7 @@ vim.opt.undofile = true
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
-vim.opt.termguicolors = true
+-- vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
@@ -68,4 +68,3 @@ end
 -- vim.cmd('colorscheme catppuccin-mocha')
 -- vim.cmd('highlight Normal guibg=none ctermbg=none')
 -- vim.cmd('highlight NormalFloat guibg=none ctermbg=none')
-
