@@ -122,7 +122,7 @@ set reply_to
 set reverse_name
 set include
 set forward_quote
-set editor = "vim +:silent+/^$"
+set editor = "nvim +:silent+/^$"
 
 set ispell = "aspell -e -c"
 set reverse_alias
