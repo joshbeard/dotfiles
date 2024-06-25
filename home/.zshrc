@@ -34,7 +34,9 @@ fi
 [ -f $HOME/.env ] && source $HOME/.env
 [ -f $HOME/.env.private ] && source $HOME/.env.private
 
-eval "$(fasd --init auto)"
+if which fasd >>/dev/null 2>&1; then
+  eval "$(fasd --init auto)"
+fi
 
 # Deal with "dumb" terminals and ttys
 #if [[ "$XDG_SESSION_TYPE" == 'tty' ]]; then
