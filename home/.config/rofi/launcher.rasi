@@ -17,7 +17,7 @@ configuration {
     alternate-background:        var(selected);
 	alternate-foreground:		 var(background);
 
-    font:                        "Hack";
+    font: "Inconsolata 12";
 }
 
 /*****----- Main Window -----*****/
