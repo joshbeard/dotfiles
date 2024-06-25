@@ -39,7 +39,7 @@ bar {
 }
 
 gaps inner 5
-gaps outer 8
+gaps outer 5
 
 #bindsym $mod+d exec "dmenu_run -nf '#F8F8F2' -nb '#282A36' -sb '#6272A4' -sf '#F8F8F2' -fn 'monospace-10' -p 'dmenu%'"
 
@@ -56,7 +56,9 @@ exec --no-startup-id dunst
 
 exec --no-startup-id srandrd $HOME/.local/bin/monitor-event.sh
 
-exec --no-startup-id sleep 5 && SSH_AUTH_SOCK=/run/user/1000/keyring/ssh $HOME/.local/share/wallpaper/bin/walls.sh set --once
+# Wait for monitors to be connected
+#exec --no-startup-id sleep 5; /home/josh/bin/walsh set --interval 60 -L debug --log-file /tmp/walsh.log
+exec --no-startup-id export SSH_AUTH_SOCK=/run/user/1000/gcr/ssh && /home/josh/bin/walsh set --interval 60 -L debug --log-file /tmp/walsh.log
 
 # -----------------------------------------------------------------------------
 # Keybindings
