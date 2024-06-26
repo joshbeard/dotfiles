@@ -9,6 +9,9 @@ vim.cmd('colorscheme tokyonight')
 vim.opt.termguicolors = true
 vim.opt.shortmess = "at"
 
+-- autocmd ColorScheme * runtime plugin/diagnostic.vim
+vim.cmd("autocmd ColorScheme * highlight NormalFloat guibg=none ctermbg=none")
+
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
