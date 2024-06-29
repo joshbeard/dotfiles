@@ -28,26 +28,27 @@ URxvt*cursorBlink:     true
 URxvt*cursorUnderline: false
 
 ! Composite Transparency
-URxvt*background: rgba:0000/0000/0200/c800
+URxvt.depth: 32
+URxvt*background: rgba:0000/0000/0000/ddcc
 
 ! Window tinting/background
-! URxvt.transparent:   true
-! URxvt*shading:       20
-URxvt*fading:        #111111
-URxvt*inheritPixmap: False
+URxvt.transparent:   true
+URxvt*shading:       20
+URxvt*tintColor:     #000000
+!URxvt*fading:        #111111
+!URxvt*inheritPixmap: False
+URxvt*inheritPixmap: true
 
 ! urxvt fonts
 URxvt*letterSpace: -1
 URxvt*allow_bold:  false
-URxvt.font:        xft:DejaVu Sans Mono:autohint=true:size=8,xft:Inconsolata\ for\ Powerline:autohint=true:size=8
+URxvt.font:        xft:Hack Nerd Font:autohint=true:size=9
 !URxvt*font:        xft:CascadiaMono:size=9
 !URxvt*boldFont:    xft:Monospace:size=9
 
 !! ------------------------------------------------------------------
 !! urxvt - Colors
 !! ------------------------------------------------------------------
-URxvt.depth:      32
-URxvt*tintColor:  #ffffff
 
 ! SPACE COLORS
 
