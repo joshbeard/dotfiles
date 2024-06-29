@@ -20,6 +20,7 @@ return {
   },
 
   config = function()
+    local lspconfig = require("lspconfig")
     local lsp = require("lsp-zero")
     lsp.extend_lspconfig()
     lsp.on_attach(function(client, bufnr)
@@ -27,9 +28,15 @@ return {
     end)
     lsp.preset("recommended")
 
-    -- local lspconfig = require("lspconfig")
     local mason = require("mason")
-    mason.setup()
+    mason.setup({
+      ensure_installed = {
+        "goimports",
+        "gofumpt",
+        "gomodifytags",
+        "impl",
+      },
+    })
 
     require('mason').setup({})
     require('mason-lspconfig').setup({
@@ -82,6 +89,33 @@ return {
 
     vim.diagnostic.config({
       virtual_text = true
+    })
+
+
+    local function organize_imports(client, bufnr)
+      local params = vim.lsp.util.make_range_params(nil, vim.lsp.util._get_offset_encoding())
+      params.context = { only = { "source.organizeImports" } }
+
+      local resp = client.request_sync("textDocument/codeAction", params, 3000, bufnr)
+      for _, r in pairs(resp and resp.result or {}) do
+        if r.edit then
+          vim.lsp.util.apply_workspace_edit(r.edit, vim.lsp.util._get_offset_encoding())
+        else
+          vim.lsp.buf.execute_command(r.command)
+        end
+      end
+    end
+
+    lspconfig.gopls.setup({
+      on_attach = function(client, bufnr)
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          buffer = bufnr,
+          callback = function()
+            organize_imports(client, bufnr)
+            vim.lsp.buf.format({ async = false })
+          end,
+        })
+      end,
     })
   end,
 }
