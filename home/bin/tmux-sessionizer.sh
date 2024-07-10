@@ -62,7 +62,16 @@ open() {
   $TERMINAL -e "$@"
 }
 
+open_in_terminal() {
+  $TERMINAL -e tmux-sessionizer.sh $1
+}
+
 # Main logic
+if [[ $1 == "open" ]]; then
+  open_in_terminal "$2"
+  exit 0
+fi
+
 if [[ $# -eq 1 ]] && [[ "$1" != "rofi" ]]; then
   selected=$1
 else
