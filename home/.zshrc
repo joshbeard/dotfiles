@@ -32,6 +32,7 @@ fi
 
 # Common environment configuration
 [ -f $HOME/.env ] && source $HOME/.env
+[ -f $HOME/.env.local ] && source $HOME/.env.local
 [ -f $HOME/.env.private ] && source $HOME/.env.private
 
 if which fasd >>/dev/null 2>&1; then
