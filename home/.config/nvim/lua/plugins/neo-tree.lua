@@ -155,7 +155,7 @@ return {
             },
         },
         follow_current_file = {
-          enabled = false,              -- This will find and focus the file in the active buffer every
+          enabled = true,
         },
         -- time the current file is changed while the tree is open.
         group_empty_dirs = false,                 -- when true, empty folders will be grouped together

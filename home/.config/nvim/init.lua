@@ -5,15 +5,15 @@ require("config.lazy")
 -- --------------------------------------------------------------
 vim.opt.guicursor = ""
 
-vim.cmd('colorscheme tokyonight')
 vim.opt.termguicolors = true
 vim.opt.shortmess = "at"
 
 -- autocmd ColorScheme * runtime plugin/diagnostic.vim
+vim.cmd('colorscheme tokyonight')
 vim.cmd("autocmd ColorScheme * highlight NormalFloat guibg=none ctermbg=none")
 
 vim.opt.nu = true
-vim.opt.relativenumber = true
+-- vim.opt.relativenumber = true
 
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
@@ -56,7 +56,6 @@ vim.wo.signcolumn = 'yes'
 vim.o.updatetime = 300
 
 -- Highlight trailing whitespace --
-vim.o.termguicolors = true
 vim.o.mouse = ''
 vim.cmd [[syn on]]
 -- vim.g.show_whitespace = 1
@@ -97,7 +96,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- Keymap to toggleterm
-vim.api.nvim_set_keymap("n", "<leader>tt", "<cmd>ToggleTerm<cr>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>tt", "<cmd>ToggleTerm<cr>", { noremap = true, silent = true })
 
 -- Vsplits
 vim.keymap.set("n", "<leader>vs", ":vsplit<CR>")
