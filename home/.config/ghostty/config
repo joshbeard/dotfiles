@@ -1,0 +1,7 @@
+theme = kanagawabones
+#theme = rose-pine
+
+font-family = "Hack Nerd Font Mono"
+#font-family = "Hurmit Nerd Font Mono"
+
+confirm-close-surface = false
