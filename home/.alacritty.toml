@@ -10,8 +10,8 @@ TERMINAL = "alacritty"
 size = 10.0
 
 [font.normal]
-#family = "Hack Nerd Font"
-family = "Hurmit Nerd Font"
+family = "Hack Nerd Font"
+#family = "Hurmit Nerd Font"
 #style = "Regular"
 
 [scrolling]
