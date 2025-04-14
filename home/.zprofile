@@ -21,3 +21,5 @@
 #   /etc/zsh/zlogout
 
 
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
