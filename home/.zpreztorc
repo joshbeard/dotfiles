@@ -30,6 +30,7 @@ case $(uname) in
       'completion' \
       'directory' \
       'docker' \
+      'docker-swarm' \
       'editor' \
       'environment' \
       'git' \
@@ -149,6 +150,7 @@ zstyle ':prezto:module:git:alias' skip 'yes'
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
 zstyle ':prezto:module:prompt' theme 'sorin'
+#zstyle ':prezto:module:prompt' theme 'josh'
 
 #
 # Ruby
