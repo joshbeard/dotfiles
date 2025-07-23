@@ -22,11 +22,24 @@ return {
   config = function()
     local lspconfig = require("lspconfig")
     local lsp = require("lsp-zero")
+
     lsp.extend_lspconfig()
+
+    -- Setup diagnostic signs
+    local diagnostic_signs = {
+      { name = "DiagnosticSignError", text = "E" },
+      { name = "DiagnosticSignWarn", text = "W" },
+      { name = "DiagnosticSignHint", text = "H" },
+      { name = "DiagnosticSignInfo", text = "I" },
+    }
+
+    for _, sign in ipairs(diagnostic_signs) do
+      vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+    end
+
     lsp.on_attach(function(client, bufnr)
       lsp.default_keymaps({ buffer = bufnr })
     end)
-    lsp.preset("recommended")
 
     local mason = require("mason")
     mason.setup({
@@ -47,25 +60,24 @@ return {
       },
     })
 
+    -- Configure cmp directly without using lsp.defaults
     local cmp = require('cmp')
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
-    local cmp_mappings = lsp.defaults.cmp_mappings({
+    local cmp_mappings = {
       ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
       ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
       ['<C-y>'] = cmp.mapping.confirm({ select = true }),
       ["<C-Space>"] = cmp.mapping.complete(),
-    })
+    }
 
-    cmp_mappings['<Tab>'] = nil
-    cmp_mappings['<S-Tab>'] = nil
-
-    lsp.set_preferences({
-      suggest_lsp_servers = true,
-      sign_icons = {
-        error = 'E',
-        warn = 'W',
-        hint = 'H',
-        info = 'I'
+    -- Setup cmp
+    cmp.setup({
+      mapping = cmp_mappings,
+      sources = {
+        {name = 'nvim_lsp'},
+        {name = 'buffer'},
+        {name = 'path'},
+        {name = 'luasnip'},
       }
     })
 
